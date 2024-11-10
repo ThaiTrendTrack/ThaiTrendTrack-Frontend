@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home / ThaiTrendTrack</title>
+    <link rel="stylesheet" href="homepage.css">
+</head>
+<body>
+    <div id="navbar-placeholder"></div>
+    <section class="img-slider">
+        <div class="list">
+            <div class="item">
+                <img src="/static/banner/movies-1.png" alt="">
+            </div>
+            <div class="item">
+                <img src="/static/banner/movies-2.png" alt="">
+            </div>
+            <div class="item">
+                <img src="/static/banner/series-1.png" alt="">
+            </div>
+            <div class="item">
+                <img src="/static/banner/series-2.png" alt="">
+            </div>
+            <div class="item">
+                <img src="/static/banner/drama-2.png" alt="">
+            </div>
+            <div class="item">
+                <img src="/static/banner/drama-1.png" alt="">
+            </div>
+        </div>
+        <div class="buttons">
+            <button id="prev"></button>
+            <button id="next"></button>
+        </div>
+    </section>
+    <section class="dots">
+        <li class="active"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </section>
+    <script src="img-slider.js"></script>
+    <script>
+        // Load external HTML file for the navbar
+        fetch('components/side_header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navbar-placeholder').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading navbar:', error));
+    </script>
+
+
+</body>
+</html>

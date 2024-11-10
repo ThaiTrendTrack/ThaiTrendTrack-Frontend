@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Sign up / ThaiTrendTrack</title>
+        <link rel="stylesheet" href="/homepage.css">
+        <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@200&family=Roboto+Condensed&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=search" rel="stylesheet">
+        <style>
+
+            body {
+                margin: 0;
+                background-color: white;
+                font-family: 'Poppins', sans-serif;
+            }
+
+            .flex {
+                display: flex;
+            }
+
+            .center {
+                justify-content: center;
+                text-align: center;
+                align-items: center;
+            }
+
+            .black-text {
+                color: black;
+            }
+
+            .white-text {
+                color: white;
+            }
+
+            .red-text {
+                color: #DC0856;
+            }
+
+            .sign-text {
+                font-size: 32px;
+                font-weight: 900;
+                /*margin-top: 1px;*/
+                margin: 0;
+                line-height: 1;
+            }
+
+            .ttt-text {
+                font-size: 26px;
+                font-weight: 900;
+                margin: 5px 0 20px 0;
+                /*margin: 0;*/
+                line-height: 1;
+            }
+
+            .margin0 {
+                margin: 0;
+            }
+
+            .main {
+                position: absolute;
+                width: 100%;
+                align-items: center;
+                top: 55px;
+                bottom: 0;
+                margin: auto 0;
+                display: grid;
+                grid-template-columns: 1fr 1fr 414.3px 1fr;
+            }
+
+            nav {
+                position: fixed;
+                width: 100%;
+                height: 90px;
+                display: flex;
+                justify-content: space-between;
+                background-color: white;
+                padding: 0 10px;
+            }
+
+            .logo {
+                text-align: center;
+            }
+
+            .logo img {
+                width: 110px;
+                height: auto;
+                padding-top: 135px;
+                padding-left: 500px;
+            }
+
+            .signLogo {
+                padding-left: 125px;
+            }
+
+            .signLogo img {
+                width: 325px;
+                height: auto;
+            }
+
+            .main {
+                position: absolute;
+                width: 100%;
+                align-items: center;
+                top: 55px;
+                bottom: 0;
+                margin: auto 0;
+                display: grid;
+                grid-template-columns: 1fr 414.3px 1fr 1fr;
+            }
+
+            .head {
+                font-size: 30px;
+                font-weight: 900;
+                margin: 0;
+                margin-bottom: 20px;
+            }
+
+            .input-field input {
+                background-color: white;
+                width: 95%;
+                height: 40px;
+                padding-left: 20px;
+                font-family: 'Roboto Condensed', sans-serif;
+                font-size: 15px;
+                margin-bottom: 15px;
+                border-radius: 10px;
+            }
+
+            button {
+                background-color: #DC0856;
+                width: 111%;
+                height: 40px;
+                color: white;
+                font-size: 15px;
+                font-family: 'Roboto Condensed', sans-serif;
+                margin-bottom: 15px;
+                border-radius: 10px;
+            }
+
+            .text-box {
+                text-align: center;
+            }
+
+            .remember-pw-text {
+                padding-left: 5px;
+                margin: 0;
+            }
+
+            /*.login-link {*/
+            /*    display: flex;*/
+            /*    justify-content: center;*/
+            /*    align-items: center;*/
+            /*    margin: 0;*/
+            /*    gap: 5px; !* Adjusts spacing between the text and link *!*/
+            /*}*/
+
+            .login {
+                display: inline-flex;
+                justify-content: center;
+                align-items: center;
+                margin: 0;
+                gap: 5px;
+            }
+
+            .login ul {
+                padding-left: 10px;
+                margin-left: 100px;
+            }
+
+            .login-link li {
+                list-style-type: none;
+                padding-inline-start: 0;
+            }
+
+            .login-link a {
+                color: #DC0856;
+                text-decoration: underline;
+                margin-left: 5px;
+            }
+
+            .login-link a:hover {
+                color: black;
+            }
+
+            .grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .error p {
+                color: #DC0856;
+                list-style-type: none;
+                white-space: pre;
+                padding: 0;
+                margin: 0 0 15px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <nav>
+            <div class="logo">
+                <a href="/homepage.css">
+                  <img src="/static/logo/TTT-logo1.png" alt="logo">
+                </a>
+            </div>
+        </nav>
+        <div class="main center">
+            <div class="empty"></div>
+            <div class="signup-box-padding-0">
+                <p class="red-text sign-text" style="padding-left: 45px">SIGN UP FOR</p>
+                <p class="black-text ttt-text" style="padding-left: 40px;">THAITRENDTRACK </p>
+                <form method="POST">
+                    <div class="input-field grid">
+                        <input type="text" name="firstname" placeholder="First Name">
+                        <input type="text" name="lastname" placeholder="Last Name" style="margin-left: 30px;">
+                    </div>
+                    <div class="input-field">
+                        <input type="email" name="email" placeholder="Email" style="width: 105%">
+                    </div>
+                    <div class="input-field">
+                        <input type="text" name="username" placeholder="Username" style="width: 105%">
+                    </div>
+                    <div class="input-field grid">
+                        <input type="password" name="password1" placeholder="Password">
+                        <input type="password" name="password2" placeholder="Confirm Password" style="margin-left: 30px;">
+                    </div>
+                    <button type="submit">Sign up</button>
+                    <div class="login center margin0" style="display: inline-flex; gap: 30px;">
+                        <p class="black-text margin0">Already have an account?</p>
+                        <a href="login.html" class="red-text" style="color: #DC0856; text-decoration: underline;">Log in</a>
+                    </div>
+
+                </form>
+            </div>
+            <div class="signLogo">
+                <img src="/icons/signLogo.png">
+            </div>
+                <div class="empty"></div>
+        </div>
+    </body>
+</html>

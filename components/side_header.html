@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>ThaiTrendTrack</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@200&family=Roboto+Condensed&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=search" rel="stylesheet">
+    <style>
+      body {
+        margin: 0;
+        background-color: white;
+        font-family: 'Poppins', sans-serif;
+        font-weight: bold;
+      }
+
+      .flex-center {
+        display: flex;
+        justify-content: center;
+      }
+
+      nav {
+        position: fixed;
+        width: 100%;
+        height: 90px;
+        display: flex;
+        /*justify-content: space-between;*/
+        align-items: center;
+        background-color: white;
+        padding: 0 5px;
+        z-index: 999999;
+      }
+
+      ul {
+        padding-left: 0;
+        display: flex;
+        list-style-type: none;
+      }
+
+      .logo {
+        text-align: center;
+      }
+
+      .logo img {
+        width: 80px;
+        height: auto;
+        padding-top: 9px;
+        padding-left: 15px;
+      }
+
+      .menu {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .menu li {
+        float: left;
+        padding-left: 30px;
+        list-style-type: none;
+      }
+
+      .menu-text a {
+        color: black;
+        list-style-type: none;
+        text-decoration: none ;
+        font-size: 18px;
+      }
+
+      .menu-text a:hover {
+        color: #DC0856;
+      }
+
+      /*.search-container {*/
+      /*  position: absolute;*/
+      /*  left: 55%;*/
+      /*  transform: translateX(-50%);*/
+      /*}*/
+
+      .search-container {
+        display: flex;
+        align-items: center;
+        margin-left: 200px;
+      }
+
+      .search {
+        display: flex;
+        align-items: center;
+        padding: 14px;
+        border-radius: 28px;
+        height: 4px;
+        background: whitesmoke;
+        border: 1.5px solid black;
+        transition: box-shadow 0.25s;
+      }
+
+      .search:focus-within {
+        box-shadow: 0 0 4px gray;
+      }
+
+      .search-input {
+        font-size: 14px;
+        font-family: 'Poppins', sans-serif;
+        color: dimgrey;
+        outline: none;
+        border: none;
+        background: transparent;
+        width: 220px;
+        height: 10px;
+        margin-left: 8px;
+      }
+
+      .search-input::placeholder {
+        color: dimgray;
+      }
+
+      .search-icon {
+        color: #DC0856
+      }
+
+      .nav-icons {
+        display: flex;
+        align-items: center;
+        margin-left: 25px;
+      }
+
+      .nav-icons a {
+        margin-left: 15px;
+        width: 28px;
+        height: 28px;
+        display: inline-flex;
+      }
+
+      .nav-icons a:hover svg {
+        fill: #DC0856;
+      }
+
+      .nav-icons svg {
+        fill: black;
+        width: 100%;
+        height: 100%;
+        transition: fill 0.3s;
+      }
+
+      .nav-icons span {
+        margin: 0 20px 0 30px;
+        font-size: 26px;
+        color: #DC0856;
+      }
+
+      .account {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-left: 6px;
+        margin-top: -4px;
+     }
+
+     /* .profile-photo {*/
+     /*   width: 32px;*/
+     /*   height: 32px;*/
+     /*   border-radius: 50%;*/
+     /*   object-fit: cover;*/
+     /*   margin-left: 6px;*/
+     /*   margin-top: -6px;*/
+     /*   border: 2px solid black;*/
+     /*}*/
+
+      .user svg {
+        fill: white;
+        padding-left: 2px;
+      }
+
+      .user {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 30px;
+        white-space: nowrap;
+        margin-right: 40px;
+      }
+
+      .user li {
+        list-style-type: none;
+        padding-top: 9px;
+        margin: 0;
+      }
+
+      .line {
+        margin: 0 8px;
+      }
+    </style>
+</head>
+
+<body>
+    <nav>
+      <div class="left-nav flex-center">
+        <div class="logo">
+          <img src="/static/logo/TTT-logo1.png" alt="logo">
+        </div>
+        <div class="menu">
+          <ul>
+            <li class="menu-text"><a href="{% url '//' %}">Home</a></li>
+            <li class="menu-text"><a href="{% url '//' %}">Movies</a></li>
+            <li class="menu-text"><a href="{% url '//' %}">Series</a></li>
+            <li class="menu-text"><a href="{% url '//' %}">Drama</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="search-container">
+        <form>
+            <div class="search">
+              <span class="search-icon material-symbols-outlined">search</span>
+                <label>
+                    <input class="search-input" type="text" placeholder="| Search">
+                </label>
+            </div>
+        </form>
+      </div>
+      <div class="nav-icons">
+          <a href="{% url '//' %}">
+              <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368">
+                  <path d="M880-80 720-240H320q-33 0-56.5-23.5T240-320v-40h440q33 0 56.5-23.5T760-440v-280h40q33 0 56.5 23.5T880-640v560ZM160-473l47-47h393v-280H160v327ZM80-280v-520q0-33 23.5-56.5T160-880h440q33 0 56.5 23.5T680-800v280q0 33-23.5 56.5T600-440H240L80-280Zm80-240v-280 280Z"/>
+              </svg>
+          </a>
+
+          <a href="{% url '//' %}">
+              <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368">
+                  <path d="M200-120v-640q0-33 23.5-56.5T280-840h400q33 0 56.5 23.5T760-760v640L480-240 200-120Zm80-122 200-86 200 86v-518H280v518Zm0-518h400-400Z"/>
+              </svg>
+          </a>
+
+          <a href="{% url '//' %}">
+              <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368">
+                  <path d="M160-200v-80h80v-280q0-83 50-147.5T420-792v-28q0-25 17.5-42.5T480-880q25 0 42.5 17.5T540-820v28q80 20 130 84.5T720-560v280h80v80H160Zm320-300Zm0 420q-33 0-56.5-23.5T400-160h160q0 33-23.5 56.5T480-80ZM320-280h320v-280q0-66-47-113t-113-47q-66 0-113 47t-47 113v280Z"/>
+              </svg>
+          </a>
+
+          <a href="{% url '//' %}">
+              <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368">
+                  <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/>
+              </svg>
+          </a>
+          <span class="line">|</span>
+          <div class="user">
+              <li class="menu-text"><a href="../registration/login.html">Log in</a></li>
+              <li class="menu-text"><a href="../registration/signup.html">Sign up</a></li>
+          </div>
+
+<!--          <h3 class="name">NichaParich02</h3>-->
+
+          <a href="{% url '//' %}">
+	        <img src="/static/icons/user.png" alt="Profile Photo" class="account">
+          </a>
+<!--          <a href="{% url '//' %}">-->
+<!--	        <img src="../static/icons/NichaParich.png" alt="Profile Photo" class="profile-photo">-->
+<!--          </a>-->
+      </div>
+    </nav>
+</body>
+</html>
