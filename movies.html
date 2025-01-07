@@ -1,10 +1,278 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Movies / ThaiTrendTrack</title>
+    <link rel="stylesheet" href="/homepage.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@200&family=Roboto+Condensed&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=search" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            background-color: white;
+            font-family: 'Poppins', sans-serif;
+        }
+        .flex {
+            display: flex;
+        }
+
+        .center {
+            justify-content: center;
+            text-align: center;
+            align-items: center;
+        }
+
+        .black-text {
+            color: black;
+        }
+
+        .white-text {
+            color: white;
+        }
+
+        .red-text {
+            color: #DC0856;
+        }
+
+        .margin0 {
+            margin: 0;
+        }
+
+        .text-content {
+            position: fixed;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            line-height: 1.2;
+            margin-top: 50px;
+            z-index: 1;
+        }
+
+        .ttt-text {
+             font-size: 28px;
+             font-weight: 900;
+             margin: 0;
+             line-height: 1;
+             white-space: nowrap;
+        }
+
+        .movies-container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1px 15px;
+            justify-content: center;
+            align-items: center;
+            margin: 100px auto;
+            transform: translateX(210px);
+        }
+
+        .movie-card {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            background-color: white;
+            width: 150px;
+            height: auto;
+            text-align: left;
+            padding: 20px;
+            margin: 0;
+        }
+
+        .movie-image {
+            position: relative;
+            width: 150px;
+            height: 225px;
+            overflow: hidden;
+        }
+
+        .movie-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .heart-button {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 50%;
+            padding: 5px;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .heart-button .material-symbols-outlined {
+            font-size: 18px;
+            color: #DC0856;
+        }
+
+        .movie-title {
+            margin: 10px 0 5px;
+            font-size: 1rem;
+            font-weight: bolder;
+        }
+
+        .movie-subtitle {
+            margin: 0px 0 5px;
+            font-size: 12px;
+            font-weight: normal;
+        }
+
+        .movie-year {
+            margin: 0;
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: #777;
+        }
+    </style>
 </head>
 <body>
-$END$
+    <!-- Navbar Placeholder -->
+    <div id="navbar-placeholder"></div>
+
+    <!-- Main Content -->
+    <div class="main">
+         <div class="text-content">
+             <p class="black-text ttt-text" style="padding-left: 230px;">Movies</p>
+         </div>
+        <div class="movies-container">
+            <!-- Movie Card -->
+            <div class="movie-card">
+                <div class="movie-image">
+                    <img src="/static/posters/poster_m1.png" alt="Movie Poster">
+                    <button class="heart-button">
+                        <span class="material-symbols-outlined">heart</span>
+                    </button>
+                </div>
+                <p class="movie-title">Movie Title 1</p>
+                <p class="movie-subtitle">SubTitle 1</p>
+                <p class="movie-year">2024</p>
+            </div>
+
+            <div class="movie-card">
+                <div class="movie-image">
+                    <img src="/static/posters/poster_m1.png" alt="Movie Poster">
+                    <button class="heart-button">
+                        <span class="material-symbols-outlined">heart</span>
+                    </button>
+                </div>
+                <p class="movie-title">Movie Title 2</p>
+                <p class="movie-subtitle">SubTitle 2</p>
+                <p class="movie-year">2023</p>
+            </div>
+
+            <div class="movie-card">
+                <div class="movie-image">
+                    <img src="/static/posters/poster_m1.png" alt="Movie Poster">
+                    <button class="heart-button">
+                        <span class="material-symbols-outlined">heart</span>
+                    </button>
+                </div>
+                <p class="movie-title">Movie Title 3</p>
+                <p class="movie-subtitle">SubTitle 3</p>
+                <p class="movie-year">2022</p>
+            </div>
+
+             <div class="movie-card">
+                <div class="movie-image">
+                    <img src="/static/posters/poster_m1.png" alt="Movie Poster">
+                    <button class="heart-button">
+                        <span class="material-symbols-outlined">heart</span>
+                    </button>
+                </div>
+                <p class="movie-title">Movie Title 4</p>
+                 <p class="movie-subtitle">SubTitle 4</p>
+                <p class="movie-year">2022</p>
+            </div>
+
+             <div class="movie-card">
+                <div class="movie-image">
+                    <img src="/static/posters/poster_m1.png" alt="Movie Poster">
+                    <button class="heart-button">
+                        <span class="material-symbols-outlined">heart</span>
+                    </button>
+                </div>
+                <p class="movie-title">Movie Title 5</p>
+                <p class="movie-subtitle">SubTitle 5</p>
+                <p class="movie-year">2022</p>
+            </div>
+
+            <div class="movie-card">
+                <div class="movie-image">
+                    <img src="/static/posters/poster_m1.png" alt="Movie Poster">
+                    <button class="heart-button">
+                        <span class="material-symbols-outlined">heart</span>
+                    </button>
+                </div>
+                <p class="movie-title">Movie Title 6</p>
+                <p class="movie-subtitle">SubTitle 6</p>
+                <p class="movie-year">2022</p>
+            </div>
+
+            <div class="movie-card">
+                <div class="movie-image">
+                    <img src="/static/posters/poster_m1.png" alt="Movie Poster">
+                    <button class="heart-button">
+                        <span class="material-symbols-outlined">heart</span>
+                    </button>
+                </div>
+                <p class="movie-title">Movie Title 7</p>
+                <p class="movie-subtitle">SubTitle 7</p>
+                <p class="movie-year">2022</p>
+            </div>
+
+            <div class="movie-card">
+                <div class="movie-image">
+                    <img src="/static/posters/poster_m1.png" alt="Movie Poster">
+                    <button class="heart-button">
+                        <span class="material-symbols-outlined">heart</span>
+                    </button>
+                </div>
+                <p class="movie-title">Movie Title 8</p>
+                <p class="movie-subtitle">SubTitle 8</p>
+                <p class="movie-year">2022</p>
+            </div>
+
+            <div class="movie-card">
+                <div class="movie-image">
+                    <img src="/static/posters/poster_m1.png" alt="Movie Poster">
+                    <button class="heart-button">
+                        <span class="material-symbols-outlined">heart</span>
+                    </button>
+                </div>
+                <p class="movie-title">Movie Title 9</p>
+                <p class="movie-subtitle">SubTitle 9</p>
+                <p class="movie-year">2022</p>
+            </div>
+
+            <div class="movie-card">
+                <div class="movie-image">
+                    <img src="/static/posters/poster_m1.png" alt="Movie Poster">
+                    <button class="heart-button">
+                        <span class="material-symbols-outlined">heart</span>
+                    </button>
+                </div>
+                <p class="movie-title">Movie Title 10</p>
+                <p class="movie-subtitle">SubTitle 10</p>
+                <p class="movie-year">2022</p>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // Load the external navbar
+        fetch('components/side_header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navbar-placeholder').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading navbar:', error));
+    </script>
 </body>
 </html>
