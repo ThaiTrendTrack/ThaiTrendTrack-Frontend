@@ -3,12 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>Home / ThaiTrendTrack</title>
-    <link rel="stylesheet" href="homepage.css">
+    <link rel="stylesheet" href="/homepage.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@200&family=Roboto+Condensed&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=search" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <div id="navbar-placeholder"></div>
     <section class="img-slider">
         <div class="list">
+            <div class="item">
+                <img src="/static/banner/welcome.png" alt="">
+            </div>
             <div class="item">
                 <img src="/static/banner/movies-1.png" alt="">
             </div>
@@ -24,9 +30,6 @@
             <div class="item">
                 <img src="/static/banner/drama-2.png" alt="">
             </div>
-            <div class="item">
-                <img src="/static/banner/drama-1.png" alt="">
-            </div>
         </div>
         <div class="buttons">
             <button id="prev"></button>
@@ -41,17 +44,605 @@
         <li></li>
         <li></li>
     </section>
+
+    <!-- Main Content -->
+    <div class="main">
+         <div class="text-content">
+             <div class="sub-navbar-container">
+                    <a href="{% url '//' %}" class="movie-link ct-text">
+                        <svg fill="#DC0856" width="48" height="48" viewBox="0 0 256 256" id="Flat" xmlns="http://www.w3.org/2000/svg" class="arrow-icon">
+                            <path d="M240.00244,56.00513V120a8,8,0,0,1-16,0V75.314l-82.34277,82.34278a8.00122,8.00122,0,0,1-11.31446,0L96.00244,123.314,29.65967,189.65674a8.00018,8.00018,0,0,1-11.31446-11.31348l72-72a8.00122,8.00122,0,0,1,11.31446,0L136.00244,140.686,212.68848,64h-44.686a8,8,0,0,1,0-16h64c.02979,0,.0586.00415.08838.00439.2334.00269.46631.01246.69824.0354.12891.01246.25391.03638.38086.05494.13135.01928.26319.03418.39356.06006.14013.02783.27685.06591.41455.10107.11474.0293.23047.0542.34424.08862.13427.04053.26367.09058.395.13794.11523.04151.231.07935.34472.12647.1211.05.23682.10864.35449.16455.11914.05615.23926.10888.356.17138.11133.05957.21729.12745.3252.19214.11621.06934.23388.135.34668.2107.11718.07812.227.16552.33984.24951.09668.07226.1958.13965.28955.21679.18652.15284.36426.31519.53565.48389.01611.01611.03417.0293.05029.04541.02051.02051.0376.04321.05762.064.16357.167.32177.33935.47021.52026.083.10059.15527.20654.23193.31006.07862.10571.16065.20874.23438.31836.08057.1206.15088.24585.22461.36987.05957.1001.12207.19751.17724.30029.06788.126.125.25538.18506.384.05078.1084.10547.2146.15137.32568.05127.12476.09326.252.13867.37842.04248.11987.08887.238.126.36059.03857.12769.06738.25757.09912.38672.03125.124.06592.2461.09131.37256.02978.15088.04785.30322.06933.45532.01465.10645.03516.21094.0459.31861Q240.002,55.60571,240.00244,56.00513Z"/>
+                        </svg> Trends Now
+                    </a>
+                    <span class="divider">|</span>
+                    <a href="{% url '//' %}" class="movie-link ct-text">
+                        <img src="static/icons/user.png" alt="for-you" class="arrow-icon" width="32" height="32"> For You
+                    </a>
+                    <span class="divider">|</span>
+                    <a href="{% url '//' %}" class="movie-link ct-text">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="arrow-icon" fill="#DC0856" width="32" height="32">
+                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                        </svg> Favourite
+                    </a>
+                    <span class="divider">|</span>
+                    <a href="{% url '//' %}" class="movie-link ct-text">
+                        <svg width="34" height="34" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" class="arrow-icon"  fill="#DC0856">
+                          <g id="Layer_2" data-name="Layer 2">
+                            <g id="invisible_box" data-name="invisible box">
+                              <rect width="48" height="48" fill="none"/>
+                            </g>
+                            <g id="icons_Q2" data-name="icons Q2">
+                              <path d="M42.3,24l3.4-5.1a2,2,0,0,0,.2-1.7A1.8,1.8,0,0,0,44.7,16l-5.9-2.4-.5-5.9a2.1,2.1,0,0,0-.7-1.5,2,2,0,0,0-1.7-.3L29.6,7.2,25.5,2.6a2.2,2.2,0,0,0-3,0L18.4,7.2,12.1,5.9a2,2,0,0,0-1.7.3,2.1,2.1,0,0,0-.7,1.5l-.5,5.9L3.3,16a1.8,1.8,0,0,0-1.2,1.2,2,2,0,0,0,.2,1.7L5.7,24,2.3,29.1a2,2,0,0,0,1,2.9l5.9,2.4.5,5.9a2.1,2.1,0,0,0,.7,1.5,2,2,0,0,0,1.7.3l6.3-1.3,4.1,4.5a2,2,0,0,0,3,0l4.1-4.5,6.3,1.3a2,2,0,0,0,1.7-.3,2.1,2.1,0,0,0,.7-1.5l.5-5.9L44.7,32a2,2,0,0,0,1-2.9ZM18,31.1l-4.2-3.2L12.7,27h-.1l.6,1.4,1.7,4-2.1.8L9.3,24.6l2.1-.8L15.7,27l1.1.9h0a11.8,11.8,0,0,0-.6-1.3l-1.6-4.1,2.1-.9,3.5,8.6Zm3.3-1.3-3.5-8.7,6.6-2.6.7,1.8L20.7,22l.6,1.6L25.1,22l.7,1.7L22,25.2l.7,1.9,4.5-1.8.7,1.8Zm13.9-5.7-2.6-3.7-.9-1.5h-.1a14.7,14.7,0,0,1,.4,1.7l.8,4.5-2.1.9-5.9-7.7,2.2-.9,2.3,3.3,1.3,2h0a22.4,22.4,0,0,1-.4-2.3l-.7-4,2-.8L33.8,19,35,20.9h0s-.2-1.4-.4-2.4L34,14.6l2.1-.9,1.2,9.6Z"/>
+                            </g>
+                          </g>
+                        </svg> New Arrival
+                    </a>
+            </div>
+
+            <div class="sub-navbar2">
+                <div class="slide-container">
+                    <div class="ct-wrapper">
+                        <!-- Left Arrow -->
+                        <i class="fa-solid fa-angle-left" id="prev-nav"></i>
+
+                        <!-- Carousel List -->
+                        <ul class="carousel" id="genre-carousel">
+                            <li class="card genre-item"><a href="#"><span>Action</span></a></li>
+                            <li class="card genre-item"><a href="#"><span>Adventure</span></a></li>
+                            <li class="card genre-item"><a href="#"><span>Animation</span></a></li>
+                            <li class="card genre-item"><a href="#"><span>Comedy</span></a></li>
+                            <li class="card genre-item"><a href="#"><span>Crime</span></a></li>
+                            <li class="card genre-item"><a href="#"><span>Documentary</span></a></li>
+                            <li class="card genre-item"><a href="#"><span>Drama</span></a></li>
+                            <li class="card genre-item"><a href="#"><span>Fantasy</span></a></li>
+                            <li class="card genre-item"><a href="#"><span>History</span></a></li>
+                            <li class="card genre-item"><a href="#"><span>Horror</span></a></li>
+                            <li class="card genre-item"><a href="#"><span>Music</span></a></li>
+                            <li class="card genre-item"><a href="#"><span>Mystery</span></a></li>
+                            <li class="card genre-item"><a href="#"><span>Romance</span></a></li>
+                            <li class="card genre-item"><a href="#"><span>Sci-Fi</span></a></li>
+                            <li class="card genre-item"><a href="#"><span>Thriller</span></a></li>
+                            <li class="card genre-item"><a href="#"><span>TV Movie</span></a></li>
+                            <li class="card genre-item"><a href="#"><span>War</span></a></li>
+                            <li class="card genre-item"><a href="#"><span>Western</span></a></li>
+                        </ul>
+
+                        <!-- Right Arrow -->
+                        <i class="fa-solid fa-angle-right" id="next-nav"></i>
+                    </div>
+                </div>
+            </div>
+
+             <p class="black-text ct-text" style="padding-left: 235px; margin-top: 45px">
+                 <a href="{% url '//' %}" class="movie-link">Movies
+                     <svg fill="#000000" height="22px" width="22px" class="arrow-icon" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                         viewBox="0 0 512 512" xml:space="preserve">
+                         <g>
+                            <g>
+                                <g>
+                                    <path d="M256,0C114.618,0,0,114.618,0,256s114.618,256,256,256s256-114.618,256-256S397.382,0,256,0z M256,469.333
+                                        c-117.818,0-213.333-95.515-213.333-213.333S138.182,42.667,256,42.667S469.333,138.182,469.333,256S373.818,469.333,256,469.333
+                                        z"/>
+                                    <path d="M228.418,134.248c-8.331-8.331-21.839-8.331-30.17,0c-8.331,8.331-8.331,21.839,0,30.17L289.83,256l-91.582,91.582
+                                        c-8.331,8.331-8.331,21.839,0,30.17c8.331,8.331,21.839,8.331,30.17,0l106.667-106.667c8.331-8.331,8.331-21.839,0-30.17
+                                        L228.418,134.248z"/>
+                                </g>
+                            </g>
+                         </g>
+                     </svg>
+                 </a>
+             </p>
+
+             <p class="black-text ct-text" style="padding-left: 235px; margin-top: 350px">
+                 <a href="{% url '//' %}" class="movie-link">Series
+                       <svg fill="#000000" height="22px" width="22px" class="arrow-icon" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                         viewBox="0 0 512 512" xml:space="preserve">
+                         <g>
+                            <g>
+                                <g>
+                                    <path d="M256,0C114.618,0,0,114.618,0,256s114.618,256,256,256s256-114.618,256-256S397.382,0,256,0z M256,469.333
+                                        c-117.818,0-213.333-95.515-213.333-213.333S138.182,42.667,256,42.667S469.333,138.182,469.333,256S373.818,469.333,256,469.333
+                                        z"/>
+                                    <path d="M228.418,134.248c-8.331-8.331-21.839-8.331-30.17,0c-8.331,8.331-8.331,21.839,0,30.17L289.83,256l-91.582,91.582
+                                        c-8.331,8.331-8.331,21.839,0,30.17c8.331,8.331,21.839,8.331,30.17,0l106.667-106.667c8.331-8.331,8.331-21.839,0-30.17
+                                        L228.418,134.248z"/>
+                                </g>
+                            </g>
+                         </g>
+                     </svg>
+                 </a>
+             </p>
+
+             <p class="black-text ct-text" style="padding-left: 235px; margin-top: 355px">
+                 <a href="{% url '//' %}" class="drama-link">Drama
+                       <svg fill="#000000" height="22px" width="22px" class="arrow-icon" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                         viewBox="0 0 512 512" xml:space="preserve">
+                         <g>
+                            <g>
+                                <g>
+                                    <path d="M256,0C114.618,0,0,114.618,0,256s114.618,256,256,256s256-114.618,256-256S397.382,0,256,0z M256,469.333
+                                        c-117.818,0-213.333-95.515-213.333-213.333S138.182,42.667,256,42.667S469.333,138.182,469.333,256S373.818,469.333,256,469.333
+                                        z"/>
+                                    <path d="M228.418,134.248c-8.331-8.331-21.839-8.331-30.17,0c-8.331,8.331-8.331,21.839,0,30.17L289.83,256l-91.582,91.582
+                                        c-8.331,8.331-8.331,21.839,0,30.17c8.331,8.331,21.839,8.331,30.17,0l106.667-106.667c8.331-8.331,8.331-21.839,0-30.17
+                                        L228.418,134.248z"/>
+                                </g>
+                            </g>
+                         </g>
+                     </svg>
+                 </a>
+             </p>
+         </div>
+
+        <section class="movies-content">
+            <div class="movies-container">
+                <!-- Movie Card -->
+                <div class="movie-card">
+                    <div class="movie-image">
+                        <img src="static/posters/poster_m1.jpg" alt="Movie Poster">
+                        <button class="heart-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <p class="movie-title">Movie Title 1</p>
+                    <p class="movie-subtitle">SubTitle 1</p>
+                    <p class="movie-year">2024
+                    <span class="icon heart-count">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                        </svg>
+                        <span class="count">789</span>
+                    </span>
+                    <span class="icon engagement-count">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                            <path d="M3 3h2v18H3zM9 7h2v14H9zM15 12h2v9h-2zM21 5h2v16h-2z"/>
+                        </svg>
+                        <span class="count">1.5k</span>
+                    </span>
+                    </p>
+                </div>
+
+                <div class="movie-card">
+                    <div class="movie-image">
+                        <img src="static/posters/poster_m1.jpg" alt="Movie Poster">
+                        <button class="heart-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <p class="movie-title">Movie Title 2</p>
+                    <p class="movie-subtitle">SubTitle 2</p>
+                    <p class="movie-year">2024
+                    <span class="icon heart-count">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                        </svg>
+                        <span class="count">789</span>
+                    </span>
+                    <span class="icon engagement-count">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                            <path d="M3 3h2v18H3zM9 7h2v14H9zM15 12h2v9h-2zM21 5h2v16h-2z"/>
+                        </svg>
+                        <span class="count">1.5k</span>
+                    </span>
+                    </p>
+                </div>
+
+                <div class="movie-card">
+                    <div class="movie-image">
+                        <img src="static/posters/poster_m1.jpg" alt="Movie Poster">
+                        <button class="heart-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <p class="movie-title">Movie Title 3</p>
+                    <p class="movie-subtitle">SubTitle 3</p>
+                    <p class="movie-year">2024
+                    <span class="icon heart-count">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                        </svg>
+                        <span class="count">789</span>
+                    </span>
+                    <span class="icon engagement-count">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                            <path d="M3 3h2v18H3zM9 7h2v14H9zM15 12h2v9h-2zM21 5h2v16h-2z"/>
+                        </svg>
+                        <span class="count">1.5k</span>
+                    </span>
+                    </p>
+                </div>
+
+                 <div class="movie-card">
+                    <div class="movie-image">
+                        <img src="static/posters/poster_m1.jpg" alt="Movie Poster">
+                        <button class="heart-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <p class="movie-title">Movie Title 4</p>
+                     <p class="movie-subtitle">SubTitle 4</p>
+                    <p class="movie-year">2024
+                    <span class="icon heart-count">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                        </svg>
+                        <span class="count">789</span>
+                    </span>
+                    <span class="icon engagement-count">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                            <path d="M3 3h2v18H3zM9 7h2v14H9zM15 12h2v9h-2zM21 5h2v16h-2z"/>
+                        </svg>
+                        <span class="count">1.5k</span>
+                    </span>
+                    </p>
+                </div>
+
+                 <div class="movie-card">
+                    <div class="movie-image">
+                        <img src="static/posters/poster_m1.jpg" alt="Movie Poster">
+                        <button class="heart-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <p class="movie-title">Movie Title 5</p>
+                    <p class="movie-subtitle">SubTitle 5</p>
+                    <p class="movie-year">2024
+                    <span class="icon heart-count">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                        </svg>
+                        <span class="count">789</span>
+                    </span>
+                    <span class="icon engagement-count">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                            <path d="M3 3h2v18H3zM9 7h2v14H9zM15 12h2v9h-2zM21 5h2v16h-2z"/>
+                        </svg>
+                        <span class="count">1.5k</span>
+                    </span>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="series-content">
+            <div class="series-container">
+                <div class="series-card">
+                    <div class="series-image">
+                        <img src="static/posters/poster_s1.jpg" alt="Series Poster">
+                        <button class="heart-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <p class="series-title">Series Title 1</p>
+                    <p class="series-subtitle">SubTitle 1</p>
+                    <p class="series-year">2024
+                    <span class="icon heart-count">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                        </svg>
+                        <span class="count">789</span>
+                    </span>
+                    <span class="icon engagement-count">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                            <path d="M3 3h2v18H3zM9 7h2v14H9zM15 12h2v9h-2zM21 5h2v16h-2z"/>
+                        </svg>
+                        <span class="count">1.5k</span>
+                    </span>
+                    </p>
+                </div>
+
+                <div class="series-card">
+                    <div class="series-image">
+                        <img src="static/posters/poster_s1.jpg" alt="Series Poster">
+                        <button class="heart-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <p class="series-title">Series Title 2</p>
+                    <p class="series-subtitle">SubTitle 2</p>
+                    <p class="series-year">2024
+                    <span class="icon heart-count">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                        </svg>
+                        <span class="count">789</span>
+                    </span>
+                    <span class="icon engagement-count">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                            <path d="M3 3h2v18H3zM9 7h2v14H9zM15 12h2v9h-2zM21 5h2v16h-2z"/>
+                        </svg>
+                        <span class="count">1.5k</span>
+                    </span>
+                    </p>
+                </div>
+
+                <div class="series-card">
+                    <div class="series-image">
+                        <img src="static/posters/poster_s1.jpg" alt="Series Poster">
+                        <button class="heart-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <p class="series-title">Series Title 3</p>
+                    <p class="series-subtitle">SubTitle 3</p>
+                    <p class="series-year">2024
+                    <span class="icon heart-count">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                        </svg>
+                        <span class="count">789</span>
+                    </span>
+                    <span class="icon engagement-count">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                            <path d="M3 3h2v18H3zM9 7h2v14H9zM15 12h2v9h-2zM21 5h2v16h-2z"/>
+                        </svg>
+                        <span class="count">1.5k</span>
+                    </span>
+                    </p>
+                </div>
+
+                <div class="series-card">
+                    <div class="series-image">
+                        <img src="static/posters/poster_s1.jpg" alt="Series Poster">
+                        <button class="heart-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <p class="series-title">Series Title 4</p>
+                    <p class="series-subtitle">SubTitle 4</p>
+                    <p class="series-year">2024
+                    <span class="icon heart-count">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                        </svg>
+                        <span class="count">789</span>
+                    </span>
+                    <span class="icon engagement-count">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                            <path d="M3 3h2v18H3zM9 7h2v14H9zM15 12h2v9h-2zM21 5h2v16h-2z"/>
+                        </svg>
+                        <span class="count">1.5k</span>
+                    </span>
+                    </p>
+                </div>
+
+                <div class="series-card">
+                    <div class="series-image">
+                        <img src="static/posters/poster_s1.jpg" alt="Series Poster">
+                        <button class="heart-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <p class="series-title">Series Title 5</p>
+                    <p class="series-subtitle">SubTitle 5</p>
+                    <p class="series-year">2024
+                    <span class="icon heart-count">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                        </svg>
+                        <span class="count">789</span>
+                    </span>
+                    <span class="icon engagement-count">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                            <path d="M3 3h2v18H3zM9 7h2v14H9zM15 12h2v9h-2zM21 5h2v16h-2z"/>
+                        </svg>
+                        <span class="count">1.5k</span>
+                    </span>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="drama-content">
+            <div class="drama-container">
+                <div class="drama-card">
+                    <div class="drama-image">
+                        <img src="static/posters/poster_d1.jpg" alt="Drama Poster">
+                        <button class="heart-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <p class="drama-title">Drama Title 1</p>
+                    <p class="drama-subtitle">SubTitle 1</p>
+                    <p class="drama-year">2024
+                    <span class="icon heart-count">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                        </svg>
+                        <span class="count">789</span>
+                    </span>
+                    <span class="icon engagement-count">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                            <path d="M3 3h2v18H3zM9 7h2v14H9zM15 12h2v9h-2zM21 5h2v16h-2z"/>
+                        </svg>
+                        <span class="count">1.5k</span>
+                    </span>
+                    </p>
+                </div>
+
+                <div class="drama-card">
+                    <div class="drama-image">
+                        <img src="static/posters/poster_d1.jpg" alt="Drama Poster">
+                        <button class="heart-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <p class="drama-title">Drama Title 2</p>
+                    <p class="drama-subtitle">SubTitle 2</p>
+                    <p class="drama-year">2024
+                    <span class="icon heart-count">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                        </svg>
+                        <span class="count">789</span>
+                    </span>
+                    <span class="icon engagement-count">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                            <path d="M3 3h2v18H3zM9 7h2v14H9zM15 12h2v9h-2zM21 5h2v16h-2z"/>
+                        </svg>
+                        <span class="count">1.5k</span>
+                    </span>
+                    </p>
+                </div>
+
+                <div class="drama-card">
+                    <div class="drama-image">
+                        <img src="static/posters/poster_d1.jpg" alt="Drama Poster">
+                        <button class="heart-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <p class="drama-title">Drama Title 3</p>
+                    <p class="drama-subtitle">SubTitle 3</p>
+                    <p class="drama-year">2024
+                    <span class="icon heart-count">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                        </svg>
+                        <span class="count">789</span>
+                    </span>
+                    <span class="icon engagement-count">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                            <path d="M3 3h2v18H3zM9 7h2v14H9zM15 12h2v9h-2zM21 5h2v16h-2z"/>
+                        </svg>
+                        <span class="count">1.5k</span>
+                    </span>
+                    </p>
+                </div>
+
+                <div class="drama-card">
+                    <div class="drama-image">
+                        <img src="static/posters/poster_d1.jpg" alt="Drama Poster">
+                        <button class="heart-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <p class="drama-title">Drama Title 4</p>
+                    <p class="drama-subtitle">SubTitle 4</p>
+                    <p class="drama-year">2024
+                    <span class="icon heart-count">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                        </svg>
+                        <span class="count">789</span>
+                    </span>
+                    <span class="icon engagement-count">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                            <path d="M3 3h2v18H3zM9 7h2v14H9zM15 12h2v9h-2zM21 5h2v16h-2z"/>
+                        </svg>
+                        <span class="count">1.5k</span>
+                    </span>
+                    </p>
+                </div>
+
+                <div class="drama-card">
+                    <div class="drama-image">
+                        <img src="static/posters/poster_d1.jpg" alt="Drama Poster">
+                        <button class="heart-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <p class="drama-title">Drama Title 5</p>
+                    <p class="drama-subtitle">SubTitle 5</p>
+                    <p class="drama-year">2024
+                    <span class="icon heart-count">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                        </svg>
+                        <span class="count">789</span>
+                    </span>
+                    <span class="icon engagement-count">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                            <path d="M3 3h2v18H3zM9 7h2v14H9zM15 12h2v9h-2zM21 5h2v16h-2z"/>
+                        </svg>
+                        <span class="count">1.5k</span>
+                    </span>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+
     <script src="img-slider.js"></script>
     <script>
-        // Load external HTML file for the navbar
-        fetch('components/side_header.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('navbar-placeholder').innerHTML = data;
-            })
-            .catch(error => console.error('Error loading navbar:', error));
+        document.addEventListener('DOMContentLoaded', () => {
+            // Load the external navbar
+            fetch('components/side_header.html')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    document.getElementById('navbar-placeholder').innerHTML = data;
+                })
+                .catch(error => console.error('Error loading navbar:', error));
+
+            // Add click event to toggle the heart state
+            document.querySelectorAll('.heart-button').forEach(button => {
+                button.addEventListener('click', () => {
+                    button.classList.toggle('filled');
+                });
+            });
+
+            // Carousel controls
+            const carousel = document.getElementById('genre-carousel');
+            const prev = document.getElementById('prev-nav'); // Correct IDs
+            const next = document.getElementById('next-nav');
+
+            if (carousel && prev && next) {
+                const scrollAmount = carousel.offsetWidth;
+
+                next.addEventListener('click', () => {
+                    if (carousel.scrollLeft + scrollAmount >= carousel.scrollWidth - scrollAmount) {
+                        carousel.scrollTo({ left: 0, behavior: 'smooth' });
+                    } else {
+                        carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                    }
+                });
+
+                prev.addEventListener('click', () => {
+                    if (carousel.scrollLeft === 0) {
+                        carousel.scrollTo({ left: carousel.scrollWidth, behavior: 'smooth' });
+                    } else {
+                        carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+                    }
+                });
+            }
+        });
     </script>
-
-
 </body>
 </html>
