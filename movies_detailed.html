@@ -1,10 +1,643 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
+<html>
+   <head>
+        <meta charset="UTF-8">
+        <title>Detail / Movies / ThaiTrendTrack</title>
+        <link rel="stylesheet" href="homepage.css">
+        <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@200&family=Roboto+Condensed&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=search" rel="stylesheet">
+   <style>
+       body {
+            margin: 0;
+            background-color: white;
+            font-family: 'Poppins', sans-serif;
+        }
+
+       .white-text {
+            color: white;
+       }
+
+        .black-text {
+            color: black;
+        }
+
+        .center {
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        li {
+            list-style-type: none;
+            text-decoration: none;
+        }
+
+        /* layout */
+
+        .main {
+            display: grid;
+            grid-template-columns: 2fr 10fr 2fr;
+            position: relative;
+            top: 60px;
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* section */
+
+        .flex {
+            display: flex;
+        }
+
+        .card-layout {
+            display: grid;
+            grid-template-columns: repeat(7, 150px);
+            gap: 12px;
+            margin-top: 1rem;
+            margin-block-end: 20px;
+        }
+
+        /* movie */
+
+        .count {
+            font-size: 18px;
+            margin-left: 14px;
+            margin-bottom: 2px;
+        }
+
+        .name {
+            font-weight: bolder;
+            font-size: 28px;
+        }
+
+        .sub-name {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .description {
+            margin: 12px 0;
+            font-size: 18px;
+        }
+
+        .overview {
+            margin: 16px 0;
+            font-size: 20px;
+        }
+
+        .movie {
+            height: 525px;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            margin-top: 30px;
+            margin-bottom: 16px;
+        }
+
+        .movie img {
+            width: 350px;
+            height: auto;
+            object-fit: cover;
+            border-radius: 7px;
+        }
+
+        .detail {
+            flex-direction: column;
+            margin-left: 20px;
+            display: inline-block;
+            justify-content: space-between;
+        }
+
+        .icons {
+            display: flex;
+            margin-left: 650px;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .icons .trans-icon {
+            width: 30px;
+            height: auto;
+            cursor: pointer;
+        }
+
+        .trans-icon, .bookmark-icon {
+            width: 24px;
+            height: 24px;
+        }
+
+        .title {
+            font-size: 30px;
+            font-weight: bolder;
+            margin: 0;
+        }
+
+        .head {
+            display: flex;
+            font-weight: 0;
+            cursor: pointer;
+            align-items: end;
+        }
+
+        .title-name {
+            color: black;
+            position: absolute;
+            opacity: 0;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 111;
+            margin: 0;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold solid 3px;
+        }
+
+        /* fav */
+
+       .comment-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+       }
+
+       .fav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+
+       }
+
+       .fav svg {
+            width: 32px;
+            height: 32px;
+            fill: gray;
+            transition: fill 0.2s ease;
+       }
+
+       .fav.is-favorite svg {
+            fill: #DC0856;
+       }
+
+
+       .fav:hover {
+            background-color: transparent;
+            transform: scale(1.1);
+       }
+
+       .stats {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+       .comments-icon , .views-icon {
+            max-width: 30px;
+            max-height: 30px;
+            object-fit: contain;
+            display: block;
+            border-radius: 0; !important;
+        }
+
+
+        /* card */
+
+       .card {
+            margin: 0;
+            padding: 0;
+            width: 150px;
+            height: 225px;
+       }
+
+       .card img:hover{
+            opacity: 50%;
+       }
+
+       .card .img:hover .title-name {
+            opacity: 1;
+       }
+
+       .card img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            cursor: pointer;
+            margin: 0;
+            border-radius: 5px;
+       }
+
+       .card .img {
+            position: relative;
+            width: 150px;
+            height: 225px;
+       }
+
+       .cast-title {
+            margin: 135px 0 5px;
+            font-size: 30px;
+            font-weight: bolder;
+       }
+
+       .series-title {
+            margin: 30px 0 5px;
+            font-size: 30px;
+            font-weight: bolder;
+       }
+
+       .drama-title {
+            margin: 28px 0 5px;
+            font-size: 30px;
+            font-weight: bolder;
+       }
+
+       .title-name {
+            color: white;
+            position: absolute;
+            opacity: 0;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 111;
+            margin: 0;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold solid 3px;
+       }
+
+       .line {
+            width: 100%;
+            height: 1px;
+            background-color:rgba(255, 255, 255, 0.788);
+       }
+
+       /* comment */
+
+       .comment {
+            flex-direction: row;
+       }
+
+       .comment-detail {
+            flex-direction: row;
+            justify-content: space-between;
+       }
+
+       .comment-form {
+            display: flex;
+            grid-template-columns: 0.3fr 6fr;
+            margin: 10px 0;
+            justify-content: left;
+            width: 100%;
+            height: auto;
+       }
+
+       form {
+            justify-content: left;
+       }
+
+       h3 {
+            margin-top: 16px;
+       }
+
+       .username-text, .datetime-text {
+           font-weight: bolder;
+       }
+
+       form button {
+            background-color: transparent;
+            width: 25px;
+            height: auto;
+            font-size: 15px;
+            font-family: 'Roboto Condensed', sans-serif;
+            border: black;
+            cursor: pointer;
+            padding-left: 5px;
+       }
+
+       .user-profile svg {
+            width: 40px;
+            height: auto;
+            fill: black;
+       }
+
+       form button svg {
+            display: flex;
+            fill: black;
+            width: 28px;
+            height: auto;
+        }
+
+       form button svg:hover {
+            fill: #DC0856;
+       }
+
+
+       form input[type=text]{
+            height: 10px;
+            width: 260%;
+            border-radius: 40px;
+            /*border: gray;*/
+            padding: 12.5px;
+            justify-content: right;
+            align-items: center;
+            background-color: rgba(255,255,255,0.2);
+            font-family: 'Roboto Condensed', sans-serif;
+            color: black;
+            padding-left: 20px;
+            font-size: 18px;
+            margin-left: 20px;
+        }
+
+       .comment-submit {
+            position: relative;
+            top: -40px;
+            left: 650px;
+            background-color: transparent;
+            width: 40px;
+            height: 40px;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+       .comment-submit svg {
+            fill: black;
+            width: 24px;
+            height: 24px;
+            transition: fill 0.2s ease;
+       }
+
+       .comment-submit svg:hover {
+            fill: #DC0856;
+       }
+
+       .comment {
+            margin-bottom: 5px;
+            justify-content: left;
+            display: grid;
+            grid-template-columns: 0.3fr 6fr;
+        }
+
+       .comment-form .account {
+            width: 40px;
+            height: 40px;
+            object-fit: cover;
+            margin-bottom: 15px;
+       }
+
+
+       .comment .account {
+            width: 30px;
+            height: auto;
+            fill: black;
+            margin-top: 15px;
+        }
+
+       .comment-text {
+            margin-left: 10px;
+        }
+
+       .comment-text .body {
+            margin-top: 6px;
+        }
+
+       .comment-box {
+            height: 200px;
+            overflow: scroll;
+            overflow-x: visible;
+            margin-top: -30px;
+        }
+
+       .comment-box::-webkit-scrollbar {
+            width: 20px;
+        }
+
+       .comment-section {
+            height: 100%;
+       }
+
+       .comment-body {
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+            word-break: break-word;
+            margin-top: -8px ;
+       }
+
+   </style>
+
+   <body>
+       <!-- Navbar Placeholder -->
+       <div id="navbar-placeholder"></div>
+       <div class="main">
+           <div class="empty"></div>
+           <div class="content">
+               <section class="movie white-text">
+                   <div class="movie-img">
+                       <img src="static/posters/poster_m1.jpg" alt="Movie Image">
+                   </div>
+                   <div class="detail flex">
+                       <p class="name title black-text">The Paradise of Thorns</p>
+                       <div class="icons">
+                           <img src="static/icons/translate.png" alt="trans-icon" class="trans-icon">
+                           <a href="{% url '//' %}" class="bookmark-icon">
+                               <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="black">
+                                   <path d="M200-120v-640q0-33 23.5-56.5T280-840h400q33 0 56.5 23.5T760-760v640L480-240 200-120Zm80-122 200-86 200 86v-518H280v518Zm0-518h400-400Z"/>
+                               </svg>
+                           </a>
+                       </div>
+                       <p class="sub-name black-text">วิมานหนาม</p>
+                       <p class="description black-text">2024 | Drama, Thriller | 2h 11m</p>
+                       <p class="overview black-text"> Thongkam and Sek, a devoted gay couple in Mae Hong Son, build
+                           a life together with a house and a durian orchard. After Sek's sudden death in an accident,
+                           Thongkam discovers that same-sex marriage is not legally recognized in Thailand, leaving him
+                           with no rights to their assets. The house and orchard are inherited by Sek's mother, who
+                           moves in with her adopted daughter Mo and gardener Jingna. As tensions rise over the orchard,
+                           Thongkam struggles to reclaim the land filled with his and Sek’s shared memories.</p>
+                       <div class="comment-section">
+                           <div class="comment-title">
+                               <div class="stats">
+                                   <button class="fav PLACEHOLDER_IS_FAVORITE_CLASS black-text" id="favoriteButton"
+                                           data-model="character" data-object-id="PLACEHOLDER_CHARACTER_ID">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="32" height="32">
+                                                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                                            </svg>
+                                   </button>
+                                   <h3 class="black-text">97</h3>
+
+                                   <img src="/static/icons/blog.png" alt="comments-icon" class="comments-icon">
+                                   <h3 class="black-text">23</h3>
+
+                                   <img src="/static/icons/bar-chart.png" alt="engage-icon" class="views-icon">
+                                   <h3 class="black-text">1987</h3>
+                               </div>
+                           </div>
+                           <div class="comment-form">
+                               <img src="/static/icons/user.png" alt="Profile Photo" class="account">
+                               <form method="post" class="flex align-items-center" id="commentForm">
+                                   <input type="text" name="user_comment" placeholder="Add a comment..." class="comment-input">
+                                   <button type="submit" class="comment-submit">
+                                       <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
+                                           <path d="M120-160v-640l760 320-760 320Zm80-120 474-200-474-200v140l240 60-240 60v140Zm0 0v-400 400Z"></path>
+                                       </svg>
+                                   </button>
+                               </form>
+                           </div>
+
+                           <div class="comment-box">
+                               <!-- Replace with a loop to display comments -->
+                               <!-- Example comment -->
+                               <div class="comment">
+                                   <img src="/static/icons/user.png" alt="Profile Photo" class="account">
+                                   <div class="comment-text black-text">
+                                       <div class="comment-detail flex">
+                                           <p class="username-text">Jetaime_op</p>
+                                           <p class="datetime-text">7:44 PM · Dec 23, 2024 </p>
+                                       </div>
+                                       <div class="comment-body">love this movie!!</div>
+                                   </div>
+
+                                   <img src="/static/icons/user.png" alt="Profile Photo" class="account">
+                                   <div class="comment-text black-text">
+                                       <div class="comment-detail flex">
+                                           <p class="username-text">junior.np</p>
+                                           <p class="datetime-text">8:09 PM · Dec 23, 2024 </p>
+                                       </div>
+                                       <div class="comment-body">love this movie!!</div>
+                                   </div>
+
+                                   <img src="/static/icons/user.png" alt="Profile Photo" class="account">
+                                   <div class="comment-text black-text">
+                                       <div class="comment-detail flex">
+                                           <p class="username-text">TadThpn</p>
+                                           <p class="datetime-text">8:21 PM · Dec 23, 2024 </p>
+                                       </div>
+                                       <div class="comment-body">love this movie!!</div>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+               </section>
+
+               <!-- Leading Cast Section -->
+               <section>
+                   <div class="black-text">
+                       <p class="cast-title">Leading Cast</p>
+                   </div>
+                   <div class="card-layout">
+                       <!-- Replace with a loop to display series -->
+                       <li class="card">
+                           <div class="img">
+                               <img src="static/cast/JeffSatur.png" alt="Cast Image">
+                               <p class="title-name">Jeff Satur</p>
+                           </div>
+                       </li>
+                       <li class="card">
+                           <div class="img">
+                               <img src="static/cast/Engfa.png" alt="Cast Image">
+                               <p class="title-name">Engfa Waraha</p>
+                           </div>
+                       </li>
+                       <li class="card">
+                           <div class="img">
+                               <img src="static/cast/Seeda.png" alt="Cast Image">
+                               <p class="title-name">Seeda Puapimon</p>
+                           </div>
+                       </li>
+                       <li class="card">
+                           <div class="img">
+                               <img src="static/cast/Harit.png" alt="Cast Image">
+                               <p class="title-name">Harit Buayoi</p>
+                           </div>
+                       </li>
+                       <li class="card">
+                           <div class="img">
+                               <img src="static/cast/Pongsakorn.png" alt="Cast Image">
+                               <p class="title-name">Pongsakorn Mettarikanon</p>
+                           </div>
+                       </li>
+                   </div>
+               </section>
+
+               <!-- Series Section -->
+               <section>
+                   <div class="black-text">
+                       <p class="series-title">Related Series</p>
+                   </div>
+                   <div class="card-layout">
+                       <!-- Replace with a loop to display series -->
+                       <li class="card">
+                           <a href="//">
+                               <div class="img">
+                                   <img src="static/posters/poster_s1.jpg" alt="Series Image">
+                                   <p class="title-name">The Believers</p>
+                               </div>
+                           </a>
+                       </li>
+                       <li class="card">
+                           <a href="//">
+                               <div class="img">
+                                   <img src="static/posters/poster_s1.jpg" alt="Series Image">
+                                   <p class="title-name">The Believers</p>
+                               </div>
+                           </a>
+                       </li>
+                       <li class="card">
+                           <a href="//">
+                               <div class="img">
+                                   <img src="static/posters/poster_s1.jpg" alt="Series Image">
+                                   <p class="title-name">The Believers</p>
+                               </div>
+                           </a>
+                       </li>
+                   </div>
+               </section>
+
+               <!-- Drama Section -->
+               <section>
+                   <div class="black-text">
+                       <p class="drama-title">Related Drama</p>
+                   </div>
+                   <div class="card-layout">
+                       <!-- Replace with a loop to display drama -->
+                       <li class="card">
+                           <a href="//">
+                               <div class="img">
+                                   <img src="static/posters/poster_d1.jpg" alt="Drama Image">
+                                   <p class="title-name">My Cherie Amour</p>
+                               </div>
+                           </a>
+                       </li>
+                       <li class="card">
+                           <a href="//">
+                               <div class="img">
+                                   <img src="static/posters/poster_d1.jpg" alt="Drama Image">
+                                   <p class="title-name">My Cherie Amour</p>
+                               </div>
+                           </a>
+                       </li>
+                   </div>
+               </section>
+           </div>
+           <div class="empty"></div>
+       </div>
+
+       <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const favButton = document.querySelector(".fav");
+
+            favButton.addEventListener("click", function () {
+                this.classList.toggle("is-favorite");
+            });
+        });
+       </script>
+   </body>
 </html>
