@@ -163,7 +163,6 @@
             fill: #DC0856;
         }
 
-
         .dropdown-container {
             position: relative;
             display: inline-block;
@@ -172,20 +171,18 @@
         .dropdown-btn {
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: space-between;
             width: 100px;
             height: 40px;
-            /*gap: 8px; !* Ensure spacing between flag and text *!*/
             background: none;
             border: none;
             cursor: pointer;
-            /*padding: 5px;*/
             white-space: nowrap; /* Prevent text wrapping */
             overflow: hidden;
         }
 
         .selected-lang {
-            width: 30px; /* Adjust for max language code */
+            width: 50px; /* Adjust for max language code */
             text-align: center;
             display: inline-block;
             margin-right: 5px;
@@ -199,29 +196,23 @@
             margin-right: 10px;
         }
 
-        .dropdown-list {
+       .dropdown-list {
+            display: none;
+            height: 225px;
+            width: auto;
+            margin-top: 5px;
+            overflow-y: auto;
+            overflow-x: hidden;
             position: absolute;
-            top: 40px;
             left: 0;
             background: white;
-            border: 1.5px solid #ccc;
             border-radius: 5px;
-            padding: 0;
-            margin: 0;
-            list-style: none;
-            display: none; /* Hidden by default */
-            width: 155px;
-
-            /* ✅ Enable scrolling */
-            max-height: 200px; /* Adjust height as needed */
-            overflow-y: auto;
-
-            /* ✅ Prevent overlapping issues */
-            z-index: 1000;
+            border: 1.5px solid #ccc;
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
         }
 
-        .dropdown-list li {
+       .dropdown-list li {
             display: flex;
             align-items: center;
             gap: 8px;
@@ -229,22 +220,30 @@
             cursor: pointer;
             transition: background 0.2s;
             color: black;
-        }
+            width: 100%;
+       }
 
-        .dropdown-list li img {
+       .dropdown-list li img {
             width: 20px;
             height: 20px;
-        }
+            margin-left: -30px;
+            margin-right: 4px;
+       }
 
-        .dropdown-list li:hover {
+       .dropdown-list li:hover {
             background: #efefef;
-        }
+       }
+
+       /* ✅ Ensures the icon background also changes when hovered */
+       .dropdown-list li:hover img,
+       .dropdown-list li.selected img {
+            background: #efefef;
+       }
 
         /* ✅ Show dropdown when active */
         .dropdown-container.active .dropdown-list {
             display: block;
         }
-
 
         .head {
             display: flex;
@@ -618,11 +617,11 @@
                                    </svg>
                                </a>
                                <div class="dropdown-container">
-                                   <button class="dropdown-btn">
+                                   <button class="dropdown-btn" id="translateButton">
                                        <img src="static/icons/translate.png" alt="trans-icon" class="selected-icon">
                                        <span class="selected-lang"></span>
                                    </button>
-                                   <ul class="dropdown-list">
+                                   <ul class="dropdown-list" >
                                    <li data-lang="th">
                                        <img src="static/icons/flags/thailand.png" alt="Thai"> Thai
                                    </li>
@@ -665,13 +664,13 @@
                                    <li data-lang="es">
                                        <img src="static/icons/flags/spain.png" alt="Spanish"> Spanish
                                    </li>
-                               </ul>
+                                   </ul>
                                </div>
                            </div>
                       </div>
                       <p class="sub-name black-text">วิมานหนาม</p>
                        <div class="info-container">
-                           <p class="description black-text">2024 | Drama, Thriller | 2h 11m</p>
+                           <p class="description black-text" id="movieDetails">2024 | Drama, Thriller | 2h 11m</p>
                           <div class="tag-cloud-block">
                             <span class="tag">
                                 <img src="static/icons/netflix.png" alt="Netflix Icon" class="tag-icon">Netflix
@@ -679,7 +678,7 @@
                           </div>
                        </div>
 
-                       <p class="overview black-text"> An unmarried gay couple creates a home and establishes a
+                       <p class="overview black-text" id="movieOverview"> An unmarried gay couple creates a home and establishes a
                            durian farm together. After one partner's sudden death, the deceased's family claims
                            their assets due to the absence of legal marriage recognition. The surviving partner
                            fights to recover their shared property and protect the life they built together.
@@ -870,69 +869,89 @@
            </div>
            <div class="empty"></div>
        </div>
-
        <script>
-       document.addEventListener("DOMContentLoaded", function() {
-           const bookmarkBtn = document.querySelector(".bookmark-icon");
-           const bookmarkIcon = bookmarkBtn.querySelector("path");
-
-           bookmarkBtn.addEventListener("click", function() {
-               if (bookmarkIcon.getAttribute("fill") === "#DC0856") {
-                   bookmarkIcon.setAttribute("fill", "black");
-               } else {
-                       bookmarkIcon.setAttribute("fill", "#DC0856");
-               }
-           });
-       });
-
-
-        document.addEventListener("DOMContentLoaded", function () {
-            const favButton = document.querySelector(".fav");
-
-            favButton.addEventListener("click", function () {
-                this.classList.toggle("is-favorite");
-            });
-        });
-
-        document.addEventListener("DOMContentLoaded", function () {
-            const dropdownContainer = document.querySelector(".dropdown-container");
-            const dropdownBtn = document.querySelector(".dropdown-btn");
-            const dropdownList = document.querySelector(".dropdown-list");
-            const selectedIcon = document.querySelector(".selected-icon");
-            const selectedLang = document.querySelector(".selected-lang");
-
-            // Toggle dropdown on button click
-            dropdownBtn.addEventListener("click", function () {
-                dropdownContainer.classList.toggle("active");
-            });
-
-            // Handle language selection
-            dropdownList.addEventListener("click", function (event) {
-                const selectedItem = event.target.closest("li");
-                if (!selectedItem) return;
-
-                // Get selected language info
-                const selectedImg = selectedItem.querySelector("img").src;
-                const selectedAlt = selectedItem.querySelector("img").alt;
-                const langCode = selectedItem.getAttribute("data-lang");
-
-                // Update the dropdown button
-                selectedIcon.src = selectedImg;
-                selectedIcon.alt = selectedAlt;
-                selectedLang.textContent = langCode.toUpperCase(); // Show language code
-
-                // Close dropdown
-                dropdownContainer.classList.remove("active");
-            });
-
-            // Close dropdown when clicking outside
-            document.addEventListener("click", function (event) {
-                if (!dropdownContainer.contains(event.target)) {
-                    dropdownContainer.classList.remove("active");
+           document.addEventListener("DOMContentLoaded", function () {
+               // Bookmark Button Logic
+                const bookmarkBtn = document.querySelector(".bookmark-icon");
+                if (bookmarkBtn) {
+                const bookmarkIcon = bookmarkBtn.querySelector("path");
+                bookmarkBtn.addEventListener("click", function () {
+                bookmarkIcon.setAttribute("fill", bookmarkIcon.getAttribute("fill") === "#DC0856" ? "black" : "#DC0856");
+                });
                 }
-            });
-        });
 
-       </script>
+                // Favorite Button Logic
+                const favButton = document.querySelector(".fav");
+                if (favButton) {
+                    favButton.addEventListener("click", function () {
+                        this.classList.toggle("is-favorite");
+                    });
+                }
+
+                // Dropdown Logic
+                const dropdownContainer = document.querySelector(".dropdown-container");
+                const dropdownBtn = document.querySelector(".dropdown-btn");
+                const dropdownList = document.querySelector(".dropdown-list");
+                const selectedIcon = document.querySelector(".selected-icon");
+                const selectedLang = document.querySelector(".selected-lang");
+
+                if (dropdownBtn && dropdownList && selectedIcon && selectedLang) {
+                // Toggle dropdown on button click
+                dropdownBtn.addEventListener("click", function (event) {
+                    event.stopPropagation(); // Prevents it from closing immediately
+                    dropdownContainer.classList.toggle("active");
+                });
+
+                // Handle language selection
+                dropdownList.addEventListener("click", function (event) {
+                    const selectedItem = event.target.closest("li");
+                    if (!selectedItem) return;
+
+                    // Get selected language info
+                    const selectedImg = selectedItem.querySelector("img").src;
+                    const selectedAlt = selectedItem.querySelector("img").alt;
+                    const langCode = selectedItem.getAttribute("data-lang");
+
+                    // Update the dropdown button
+                    selectedIcon.src = selectedImg;
+                    selectedIcon.alt = selectedAlt;
+                    selectedLang.textContent = langCode.toUpperCase(); // Show language code
+
+                    // Highlight the selected item
+                    document.querySelectorAll(".dropdown-list li").forEach(li => li.classList.remove("selected"));
+                    selectedItem.classList.add("selected");
+
+                    // Close dropdown
+                    dropdownContainer.classList.remove("active");
+
+                    // Translate Page
+                    translatePage(langCode);
+                });
+
+                // Close dropdown when clicking outside
+                document.addEventListener("click", function (event) {
+                    if (!dropdownContainer.contains(event.target)) {
+                        dropdownContainer.classList.remove("active");
+                    }
+                });
+                }
+               // Google Translate API Call
+                function translateText(text, targetElementId, lang) {
+                    fetch(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=${lang}&dt=t&q=${encodeURIComponent(text)}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            document.getElementById(targetElementId).innerText = data[0].map(item => item[0]).join("");
+                        })
+                        .catch(error => console.error("Translation error:", error));
+                }
+                function translatePage(lang) {
+                    let textOverview = document.getElementById("movieOverview").innerText;
+                    let textDetails = document.getElementById("movieDetails").innerText;
+
+                    translateText(textOverview, "movieOverview", lang);
+                    translateText(textDetails, "movieDetails", lang);
+                }
+           });
+        </script>
    </body>
 </html>
