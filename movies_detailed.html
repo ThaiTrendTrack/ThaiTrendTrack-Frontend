@@ -104,35 +104,147 @@
         }
 
         .detail {
-            flex-direction: column;
+            /*flex-direction: column;*/
             margin-left: 20px;
             display: inline-block;
+            /*display: flex;*/
             justify-content: space-between;
+            align-items: end;
+        }
+
+        .detail-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .title {
+            font-size: 28px;
+            font-weight: bolder;
+            margin: 0;
         }
 
         .icons {
             display: flex;
-            margin-left: 650px;
+            gap: 15px;
+        }
+
+        .icons a svg {
+            width: 32px;
+            height: 32px;
+            fill: black;
+            cursor: pointer;
+        }
+        .info-container {
+            display: flex;
             align-items: center;
             gap: 10px;
         }
 
-        .icons .trans-icon {
-            width: 30px;
-            height: auto;
+        .overview {
+            margin: 16px 0;
+            font-size: 18px;
+        }
+
+        .bookmark-icon {
+            background: transparent;
+            border: none;
             cursor: pointer;
+            padding: 0;
         }
 
-        .trans-icon, .bookmark-icon {
-            width: 24px;
-            height: 24px;
+        .bookmark-icon svg {
+            fill: #B3B3B3;
+            transition: fill 0.2s ease;
         }
 
-        .title {
-            font-size: 30px;
-            font-weight: bolder;
+        /* Color when active */
+        .bookmark-icon.active svg{
+            fill: #DC0856;
+        }
+
+
+        .dropdown-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100px;
+            height: 40px;
+            /*gap: 8px; !* Ensure spacing between flag and text *!*/
+            background: none;
+            border: none;
+            cursor: pointer;
+            /*padding: 5px;*/
+            white-space: nowrap; /* Prevent text wrapping */
+            overflow: hidden;
+        }
+
+        .selected-lang {
+            width: 30px; /* Adjust for max language code */
+            text-align: center;
+            display: inline-block;
+            margin-right: 5px;
+            margin-bottom: 10px;
+        }
+
+        .dropdown-btn img {
+            width: 30px;
+            height: 30px;
+            margin-top: -10px;
+            margin-right: 10px;
+        }
+
+        .dropdown-list {
+            position: absolute;
+            top: 40px;
+            left: 0;
+            background: white;
+            border: 1.5px solid #ccc;
+            border-radius: 5px;
+            padding: 0;
             margin: 0;
+            list-style: none;
+            display: none; /* Hidden by default */
+            width: 155px;
+
+            /* ✅ Enable scrolling */
+            max-height: 200px; /* Adjust height as needed */
+            overflow-y: auto;
+
+            /* ✅ Prevent overlapping issues */
+            z-index: 1000;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
         }
+
+        .dropdown-list li {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px;
+            cursor: pointer;
+            transition: background 0.2s;
+            color: black;
+        }
+
+        .dropdown-list li img {
+            width: 20px;
+            height: 20px;
+        }
+
+        .dropdown-list li:hover {
+            background: #efefef;
+        }
+
+        /* ✅ Show dropdown when active */
+        .dropdown-container.active .dropdown-list {
+            display: block;
+        }
+
 
         .head {
             display: flex;
@@ -177,7 +289,7 @@
        .fav svg {
             width: 32px;
             height: 32px;
-            fill: gray;
+            fill: #B3B3B3;
             transition: fill 0.2s ease;
        }
 
@@ -198,16 +310,49 @@
         }
 
        .comments-icon , .views-icon {
-            max-width: 30px;
-            max-height: 30px;
-            object-fit: contain;
-            display: block;
-            border-radius: 0; !important;
+           max-width: 30px;
+           max-height: 30px;
+           object-fit: contain;
+           display: block;
+           border-radius: 0; !important;
         }
 
+       .tag {
+            background-color: #f1f1f1;
+            color: #333333;
+            margin: 8px;
+            padding: 8px 20px;
+            font-weight: bolder;
+            font-size: 15px;
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            transition: all 0.3s ease;
+        }
+
+       .tag img {
+           width: 20px;
+           height: 20px;
+           object-fit: contain;
+           margin-right: -2px;
+       }
+
+        /* Triangle on the right side by default */
+        .tag::after {
+            content: "";
+            position: absolute;
+            right: -17px; /* Position it on the right-hand side */
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-left: 17px solid #f1f1f1; /* Creates the triangle on the right */
+            border-top: 17px solid transparent;
+            border-bottom: 17px solid transparent;
+        }
 
         /* card */
-
        .card {
             margin: 0;
             padding: 0;
@@ -239,7 +384,7 @@
        }
 
        .cast-title {
-            margin: 135px 0 5px;
+            margin: 190px 0 5px;
             font-size: 30px;
             font-weight: bolder;
        }
@@ -267,17 +412,20 @@
             margin: 0;
             text-align: center;
             font-size: 20px;
-            font-weight: bold solid 3px;
+            font-weight: bold;
+            -webkit-text-stroke-width: 0.5px;
+            -webkit-text-stroke-color: grey;
        }
 
-       .line {
+       .custom-line {
             width: 100%;
-            height: 1px;
-            background-color:rgba(255, 255, 255, 0.788);
+            height: 2px;
+            background-color: gray;
+            margin-top: 25px;
+            margin-bottom: 15px;
        }
 
        /* comment */
-
        .comment {
             flex-direction: row;
        }
@@ -290,7 +438,8 @@
        .comment-form {
             display: flex;
             grid-template-columns: 0.3fr 6fr;
-            margin: 10px 0;
+            margin-top: 10px;
+            margin-bottom: -20px;
             justify-content: left;
             width: 100%;
             height: auto;
@@ -341,7 +490,6 @@
             height: 10px;
             width: 260%;
             border-radius: 40px;
-            /*border: gray;*/
             padding: 12.5px;
             justify-content: right;
             align-items: center;
@@ -405,19 +553,35 @@
             margin-left: 10px;
         }
 
-       .comment-text .body {
-            margin-top: 6px;
-        }
-
+       /* Comment Box Scrollable Section */
        .comment-box {
-            height: 200px;
-            overflow: scroll;
-            overflow-x: visible;
-            margin-top: -30px;
+            max-height: 250px;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+       }
+
+        /* Force scrollbar visibility even when content is small */
+        .comment-box::-webkit-scrollbar {
+            width: 10px;
+            background-color: #f1f1f1;
         }
 
-       .comment-box::-webkit-scrollbar {
-            width: 20px;
+        .comment-box::-webkit-scrollbar-thumb {
+            background-color: #888;
+            border-radius: 4px;
+        }
+
+        .comment-box::-webkit-scrollbar-thumb:hover {
+            background-color: #555;
+        }
+
+        .comment-box::-webkit-scrollbar-track {
+            background-color: #e0e0e0;
         }
 
        .comment-section {
@@ -430,7 +594,6 @@
             word-break: break-word;
             margin-top: -8px ;
        }
-
    </style>
 
    <body>
@@ -444,23 +607,84 @@
                        <img src="static/posters/poster_m1.jpg" alt="Movie Image">
                    </div>
                    <div class="detail flex">
-                       <p class="name title black-text">The Paradise of Thorns</p>
-                       <div class="icons">
-                           <img src="static/icons/translate.png" alt="trans-icon" class="trans-icon">
-                           <a href="{% url '//' %}" class="bookmark-icon">
-                               <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="black">
-                                   <path d="M200-120v-640q0-33 23.5-56.5T280-840h400q33 0 56.5 23.5T760-760v640L480-240 200-120Zm80-122 200-86 200 86v-518H280v518Zm0-518h400-400Z"/>
-                               </svg>
-                           </a>
+                      <div class="detail-top">
+                           <p class="title black-text">The Paradise of Thorns</p>
+                           <div class="icons">
+                               <a href="#" class="bookmark-icon">
+                                   <svg class="bookmark-icon" viewBox="0 0 512 512" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                       <g id="Layer_1"/><g id="Layer_2">
+                                       <g><path class="st0" d="M112.9,43.5v344.14L256,468.5l143.1-80.86V43.5H112.9z M340.55,211.58l-35.15,30.74    c-2.35,2.06-3.38,5.23-2.69,8.28l10.37,45.53c1.66,7.28-6.22,13.01-12.63,9.18l-40.09-23.94c-2.68-1.6-6.02-1.6-8.71,0    l-40.09,23.94c-6.41,3.83-14.29-1.89-12.63-9.18l10.37-45.53c0.69-3.04-0.34-6.22-2.69-8.28l-35.15-30.74    c-5.62-4.92-2.62-14.18,4.82-14.85l46.51-4.2c3.11-0.28,5.81-2.25,7.04-5.12l18.37-42.93c2.94-6.87,12.67-6.87,15.61,0    l18.37,42.93c1.23,2.87,3.93,4.84,7.04,5.12l46.51,4.2C343.16,197.41,346.17,206.67,340.55,211.58z"/></g>
+                                   </g>
+                                   </svg>
+                               </a>
+                               <div class="dropdown-container">
+                                   <button class="dropdown-btn">
+                                       <img src="static/icons/translate.png" alt="trans-icon" class="selected-icon">
+                                       <span class="selected-lang"></span>
+                                   </button>
+                                   <ul class="dropdown-list">
+                                   <li data-lang="th">
+                                       <img src="static/icons/flags/thailand.png" alt="Thai"> Thai
+                                   </li>
+                                   <li data-lang="ar">
+                                       <img src="static/icons/flags/uae.png" alt="Arabic"> Arabic
+                                   </li>
+                                   <li data-lang="zh-CN">
+                                       <img src="static/icons/flags/china.png" alt="Chinese-CN"> Chinese (Simplified)
+                                   </li>
+                                   <li data-lang="zh-TW">
+                                       <img src="static/icons/flags/taiwan.png" alt="Chinese-TW"> Chinese (Traditional)
+                                   </li>
+                                   <li data-lang="en">
+                                       <img src="static/icons/flags/uk.png" alt="English"> English
+                                   </li>
+                                   <li data-lang="fr">
+                                       <img src="static/icons/flags/france.png" alt="French"> French
+                                   </li>
+                                   <li data-lang="de">
+                                       <img src="static/icons/flags/german.png" alt="German"> German
+                                   </li>
+                                   <li data-lang="hi">
+                                       <img src="static/icons/flags/india.png" alt="Hindi"> Hindi
+                                   </li>
+                                   <li data-lang="it">
+                                       <img src="static/icons/flags/italy.png" alt="Italian"> Italian
+                                   </li>
+                                   <li data-lang="ja">
+                                       <img src="static/icons/flags/japan.png" alt="Japanese"> Japanese
+                                   </li>
+                                   <li data-lang="ko">
+                                       <img src="static/icons/flags/korea.png" alt="Korean"> Korean
+                                   </li>
+                                   <li data-lang="pt">
+                                       <img src="static/icons/flags/portugal.png" alt="Portuguese"> Portuguese
+                                   </li>
+                                   <li data-lang="ru">
+                                       <img src="static/icons/flags/russia.png" alt="Russian"> Russian
+                                   </li>
+                                   <li data-lang="es">
+                                       <img src="static/icons/flags/spain.png" alt="Spanish"> Spanish
+                                   </li>
+                               </ul>
+                               </div>
+                           </div>
+                      </div>
+                      <p class="sub-name black-text">วิมานหนาม</p>
+                       <div class="info-container">
+                           <p class="description black-text">2024 | Drama, Thriller | 2h 11m</p>
+                          <div class="tag-cloud-block">
+                            <span class="tag">
+                                <img src="static/icons/netflix.png" alt="Netflix Icon" class="tag-icon">Netflix
+                            </span>
+                          </div>
                        </div>
-                       <p class="sub-name black-text">วิมานหนาม</p>
-                       <p class="description black-text">2024 | Drama, Thriller | 2h 11m</p>
-                       <p class="overview black-text"> Thongkam and Sek, a devoted gay couple in Mae Hong Son, build
-                           a life together with a house and a durian orchard. After Sek's sudden death in an accident,
-                           Thongkam discovers that same-sex marriage is not legally recognized in Thailand, leaving him
-                           with no rights to their assets. The house and orchard are inherited by Sek's mother, who
-                           moves in with her adopted daughter Mo and gardener Jingna. As tensions rise over the orchard,
-                           Thongkam struggles to reclaim the land filled with his and Sek’s shared memories.</p>
+
+                       <p class="overview black-text"> An unmarried gay couple creates a home and establishes a
+                           durian farm together. After one partner's sudden death, the deceased's family claims
+                           their assets due to the absence of legal marriage recognition. The surviving partner
+                           fights to recover their shared property and protect the life they built together.
+                       </p>
+                       <div class="custom-line"></div>
                        <div class="comment-section">
                            <div class="comment-title">
                                <div class="stats">
@@ -492,7 +716,6 @@
                            </div>
 
                            <div class="comment-box">
-                               <!-- Replace with a loop to display comments -->
                                <!-- Example comment -->
                                <div class="comment">
                                    <img src="/static/icons/user.png" alt="Profile Photo" class="account">
@@ -518,6 +741,24 @@
                                        <div class="comment-detail flex">
                                            <p class="username-text">TadThpn</p>
                                            <p class="datetime-text">8:21 PM · Dec 23, 2024 </p>
+                                       </div>
+                                       <div class="comment-body">love this movie!!</div>
+                                   </div>
+
+                                   <img src="/static/icons/user.png" alt="Profile Photo" class="account">
+                                   <div class="comment-text black-text">
+                                       <div class="comment-detail flex">
+                                           <p class="username-text">tanont916</p>
+                                           <p class="datetime-text">8:32 PM · Dec 23, 2024 </p>
+                                       </div>
+                                       <div class="comment-body">love this movie!!</div>
+                                   </div>
+
+                                   <img src="/static/icons/user.png" alt="Profile Photo" class="account">
+                                   <div class="comment-text black-text">
+                                       <div class="comment-detail flex">
+                                           <p class="username-text">_pawwie00</p>
+                                           <p class="datetime-text">8:53 PM · Dec 23, 2024 </p>
                                        </div>
                                        <div class="comment-body">love this movie!!</div>
                                    </div>
@@ -585,16 +826,16 @@
                        <li class="card">
                            <a href="//">
                                <div class="img">
-                                   <img src="static/posters/poster_s1.jpg" alt="Series Image">
-                                   <p class="title-name">The Believers</p>
+                                   <img src="static/posters/poster_s3.jpg" alt="Series Image">
+                                   <p class="title-name">Delete</p>
                                </div>
                            </a>
                        </li>
                        <li class="card">
                            <a href="//">
                                <div class="img">
-                                   <img src="static/posters/poster_s1.jpg" alt="Series Image">
-                                   <p class="title-name">The Believers</p>
+                                   <img src="static/posters/poster_s4.jpg" alt="Series Image">
+                                   <p class="title-name">Master of The House</p>
                                </div>
                            </a>
                        </li>
@@ -611,16 +852,16 @@
                        <li class="card">
                            <a href="//">
                                <div class="img">
-                                   <img src="static/posters/poster_d1.jpg" alt="Drama Image">
-                                   <p class="title-name">My Cherie Amour</p>
+                                   <img src="static/posters/poster_d2.jpg" alt="Drama Image">
+                                   <p class="title-name">Laplae the Hidden Town</p>
                                </div>
                            </a>
                        </li>
                        <li class="card">
                            <a href="//">
                                <div class="img">
-                                   <img src="static/posters/poster_d1.jpg" alt="Drama Image">
-                                   <p class="title-name">My Cherie Amour</p>
+                                   <img src="static/posters/poster_d3.jpg" alt="Drama Image">
+                                   <p class="title-name">Nobody's Happy if I'm Not</p>
                                </div>
                            </a>
                        </li>
@@ -631,6 +872,20 @@
        </div>
 
        <script>
+       document.addEventListener("DOMContentLoaded", function() {
+           const bookmarkBtn = document.querySelector(".bookmark-icon");
+           const bookmarkIcon = bookmarkBtn.querySelector("path");
+
+           bookmarkBtn.addEventListener("click", function() {
+               if (bookmarkIcon.getAttribute("fill") === "#DC0856") {
+                   bookmarkIcon.setAttribute("fill", "black");
+               } else {
+                       bookmarkIcon.setAttribute("fill", "#DC0856");
+               }
+           });
+       });
+
+
         document.addEventListener("DOMContentLoaded", function () {
             const favButton = document.querySelector(".fav");
 
@@ -638,6 +893,46 @@
                 this.classList.toggle("is-favorite");
             });
         });
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const dropdownContainer = document.querySelector(".dropdown-container");
+            const dropdownBtn = document.querySelector(".dropdown-btn");
+            const dropdownList = document.querySelector(".dropdown-list");
+            const selectedIcon = document.querySelector(".selected-icon");
+            const selectedLang = document.querySelector(".selected-lang");
+
+            // Toggle dropdown on button click
+            dropdownBtn.addEventListener("click", function () {
+                dropdownContainer.classList.toggle("active");
+            });
+
+            // Handle language selection
+            dropdownList.addEventListener("click", function (event) {
+                const selectedItem = event.target.closest("li");
+                if (!selectedItem) return;
+
+                // Get selected language info
+                const selectedImg = selectedItem.querySelector("img").src;
+                const selectedAlt = selectedItem.querySelector("img").alt;
+                const langCode = selectedItem.getAttribute("data-lang");
+
+                // Update the dropdown button
+                selectedIcon.src = selectedImg;
+                selectedIcon.alt = selectedAlt;
+                selectedLang.textContent = langCode.toUpperCase(); // Show language code
+
+                // Close dropdown
+                dropdownContainer.classList.remove("active");
+            });
+
+            // Close dropdown when clicking outside
+            document.addEventListener("click", function (event) {
+                if (!dropdownContainer.contains(event.target)) {
+                    dropdownContainer.classList.remove("active");
+                }
+            });
+        });
+
        </script>
    </body>
 </html>
