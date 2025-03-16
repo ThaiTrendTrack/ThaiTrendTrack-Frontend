@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Settings - ThaiTrendTrack</title>
+    <link rel="stylesheet" href="homepage.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@200&family=Roboto+Condensed&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<style>
+    /* General Styling */
+    body {
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        background-color: white;
+    }
+
+    /* Main Layout */
+    .main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+    }
+
+    /* Settings Container */
+    .settings-container {
+        width: 950px;
+        background: #f1f1f1;
+        padding: 25px;
+        border-radius: 12px;
+        margin-top: -210px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+        color: #222;
+        font-size: 32px;
+        font-weight: 700;
+        margin-top: 15px;
+        margin-left: 10px;
+    }
+
+    h3 {
+        color: #222;
+        font-size: 26px;
+        font-weight: 700;
+        margin-top: 15px;
+    }
+
+    /* Two-column Layout */
+    .settings-content {
+        display: flex;
+        gap: 20px;
+    }
+
+    /* Left Column - Profile Section */
+    .left-section {
+        flex: 1;
+    }
+
+    .profile-section {
+        position: relative;
+        padding: 20px;
+        background: white;
+        border-radius: 12px;
+        height: 350px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    .profile-img {
+        width: 175px;
+        height: 175px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 10px;
+        margin-top: 10px;
+    }
+
+    .profile-info h3 {
+        font-size: 22px;
+        font-weight: 700;
+        margin-top: 15px;
+        margin-bottom: 8px;
+        text-align: center;
+    }
+
+    .profile-info p {
+        display: flex;
+        align-items: center;
+        font-size: 15px;
+        font-weight: 500;
+        gap: 8px;
+        margin: 15px 0;
+    }
+
+    .profile-info i {
+        font-size: 16px;
+        color: #333;
+    }
+
+    .edit-btn {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: none;
+        border: none;
+        color: #DC0856;
+        cursor: pointer;
+        font-size: 18px;
+    }
+
+    /* Right Column - Preferences & Communities */
+    .right-section {
+        flex: 2;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .preferences-section,
+    .communities-section {
+        background: white;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    .genre-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    .genre {
+        background: #f1f1f1;
+        padding: 10px 15px;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .genre:hover {
+        background: #DC0856;
+        color: white;
+    }
+
+    /* Communities Section */
+
+    .communities-section{
+        height: 250px;
+    }
+    /*.community-container {*/
+    /*    display: flex;*/
+    /*    gap: 15px;*/
+    /*    margin-top: 15px;*/
+    /*    grid-template-columns: repeat(2, 1fr);*/
+    /*}*/
+
+    .community-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* Always 2 columns per row */
+        gap: 15px; /* Space between items */
+        margin-top: 15px;
+        align-items: center;
+        justify-content: center;
+    }
+
+
+    .community {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: #f9f9f9;
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        min-height: 40px; /* Set a consistent height */
+    }
+
+
+    .community i {
+        font-size: 25px;
+        color: #DC0856;
+    }
+
+    .community-text {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .community-text b {
+        font-size: 16px;
+        color: black;
+        font-weight: 750;
+        margin-left: 5px;
+    }
+
+    .community-text span {
+        font-size: 15px;
+        font-weight: 575;
+        color: gray;
+        margin-top: 5px;
+        margin-left: 5px;
+    }
+
+    .edit-icon {
+        color: #DC0856;
+        font-size: 20px;
+        margin-left: 8px;
+        cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+    .community-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 per row on medium screens */
+        }
+    }
+
+    @media (max-width: 480px) {
+        .community-container {
+            grid-template-columns: repeat(1, 1fr); /* 1 per row on small screens */
+        }
+    }
+
+
+</style>
+<body>
+    <!-- Navbar Placeholder -->
+    <div id="navbar-placeholder"></div>
+
+    <div class="main">
+        <div class="empty"></div>
+        <div class="content">
+            <h2><i class="fas fa-cog"></i> Settings</h2>
+        <div class="settings-container">
+            <div class="settings-content">
+                <!-- Left Column - Profile Section -->
+                <div class="left-section">
+                    <div class="profile-section">
+                        <img src="static/profile/profile-3.jpeg" alt="Profile Picture" class="profile-img">
+                        <div class="profile-info">
+                            <h3>Patpaiboon Jaidee</h3>
+                            <p><i class="fas fa-user"></i> Username: <b>Jetaime_op</b></p>
+                            <p><i class="fas fa-envelope"></i> Mail: <b>jt23.1297@gmail.com</b></p>
+                            <p><i class="fas fa-calendar"></i> Birthday: <b>23 Dec 1997</b></p>
+                        </div>
+                        <button class="edit-btn"><i class="fas fa-edit"></i></button>
+                    </div>
+                </div>
+
+                <!-- Right Column - Preferences & Communities -->
+                <div class="right-section">
+                    <div class="preferences-section">
+                        <h3>My ThaiCineDramas Taste <i class="fas fa-edit edit-icon"></i></h3>
+                        <div class="genre-container">
+                            <div class="genre">Action</div>
+                            <div class="genre">Crime</div>
+                            <div class="genre">Drama</div>
+                            <div class="genre">Horror</div>
+                            <div class="genre">Romance</div>
+                        </div>
+                    </div>
+
+                    <div class="communities-section">
+                        <h3>My Communities <i class="fas fa-edit edit-icon"></i></h3>
+                        <div class="community-container">
+                            <div class="community">
+                                <i class="fas fa-ghost"></i>
+                                <div class="community-text">
+                                    <b>FearFreaks Club</b>
+                                    <span>32 Members</span>
+                                </div>
+                            </div>
+                            <div class="community">
+                                <i class="fas fa-gun"></i>
+                                <div class="community-text">
+                                    <b>Dynamic Action Squad</b>
+                                    <span>41 Members</span>
+                                </div>
+                            </div>
+                            <div class="community">
+                                <i class="fas fa-heart"></i>
+                                <div class="community-text">
+                                    <b>Cupid's Crew</b>
+                                    <span>57 Members</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+    // Load Navbar dynamically
+    fetch('components/side_header.html')
+        .then(response => response.text())
+        .then(data => document.getElementById('navbar-placeholder').innerHTML = data)
+        .catch(error => console.error('Error loading navbar:', error));
+
+    // Future functionality: Edit button alert
+    document.querySelectorAll('.edit-btn').forEach(button => {
+        button.addEventListener('click', function () {
+            alert('Edit functionality coming soon!');
+        });
+    });
+});
+
+</script>
+
+
+
