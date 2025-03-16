@@ -135,7 +135,7 @@ a {
     gap: 1px 15px;
     justify-content: center;
     align-items: center;
-    margin-top: 195px;
+    margin-top: 220px;
     /*margin-right: 225px;*/
     transform: translateX(-1020px);
 }
@@ -214,7 +214,7 @@ a {
     gap: 1px 15px;
     justify-content: center;
     align-items: center;
-    margin-top: 600px;
+    margin-top: 625px;
     /*margin-right: 225px;*/
     transform: translateX(-2030px);
 }
@@ -415,6 +415,7 @@ a {
     font-weight: bold;
     gap: 28px; /* Space between icon and text */
     position: relative;
+    margin-bottom: 20px;
 }
 
 .sub-navbar-container a::after {
