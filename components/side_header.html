@@ -1,350 +1,393 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>ThaiTrendTrack</title>
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@200&family=Roboto+Condensed&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=search" rel="stylesheet">
+    <title>Header - ThaiTrendTrack</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
     <style>
-      body {
-        margin: 0;
-        background-color: white;
-        font-family: 'Poppins', sans-serif;
-        font-weight: bold;
-      }
+        /* General Styles */
+        body {
+            margin: 0;
+            background-color: white;
+            font-family: 'Poppins', sans-serif;
+            font-weight: bold;
+        }
 
-      .flex-center {
-        display: flex;
-        justify-content: center;
-      }
+        /* 🔥 Navigation Bar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 90px;
+            background-color: white;
+            padding: 0 20px;
+            z-index: 999;
+            position: relative;
+        }
 
-      nav {
-        position: fixed;
-        width: 100%;
-        height: 90px;
-        display: flex;
-        /*justify-content: space-between;*/
-        align-items: center;
-        background-color: white;
-        padding: 0 5px;
-        z-index: 999999;
-      }
-
-      ul {
-        padding-left: 0;
-        display: flex;
-        list-style-type: none;
-      }
-
-      .logo {
-        text-align: center;
-      }
-
-      .logo img {
-        width: 80px;
-        height: auto;
-        padding-top: 9px;
-        padding-left: 15px;
-      }
-
-      .menu {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
-      .menu li {
-        float: left;
-        padding-left: 30px;
-        list-style-type: none;
-      }
-
-      .menu-text a {
-        color: black;
-        list-style-type: none;
-        text-decoration: none ;
-        font-size: 18px;
-      }
-
-      .menu-text a:hover {
-        color: #DC0856;
-      }
-
-      /*.search-container {*/
-      /*  position: absolute;*/
-      /*  left: 55%;*/
-      /*  transform: translateX(-50%);*/
-      /*}*/
-
-      /*.search-container {*/
-      /*  display: flex;*/
-      /*  align-items: center;*/
-      /*  margin-left: 200px;*/
-      /*}*/
-
-      /*.search {*/
-      /*  display: flex;*/
-      /*  align-items: center;*/
-      /*  padding: 14px;*/
-      /*  border-radius: 28px;*/
-      /*  height: 4px;*/
-      /*  background: whitesmoke;*/
-      /*  border: 1.5px solid black;*/
-      /*  transition: box-shadow 0.25s;*/
-      /*}*/
-
-      /*.search:focus-within {*/
-      /*  box-shadow: 0 0 4px gray;*/
-      /*}*/
-
-      /*.search-input {*/
-      /*  font-size: 14px;*/
-      /*  font-family: 'Poppins', sans-serif;*/
-      /*  color: dimgrey;*/
-      /*  outline: none;*/
-      /*  border: none;*/
-      /*  background: transparent;*/
-      /*  width: 220px;*/
-      /*  height: 10px;*/
-      /*  margin-left: 8px;*/
-      /*}*/
-
-      /*.search-input::placeholder {*/
-      /*  color: dimgray;*/
-      /*}*/
-
-      /*.search-icon {*/
-      /*  color: #DC0856*/
-      /*}*/
-
-      .left-nav {
+        /* 🔥 Left Section: Logo & Menu */
+        .left-nav {
             display: flex;
             align-items: center;
-      }
+        }
 
-    .search-container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background: white;
-        border-radius: 24px;
-        overflow: hidden;
-        width: 400px;
-        height: 42px;
-        box-shadow: 0 1px 6px rgba(0, 0, 0, 0.15);
-        border: 1.5px solid black;
-        z-index: 999999;
-        margin-left: 85px;
-    }
+        .logo img {
+            width: 100px;
+            height: auto;
+            margin-right: 20px;
+        }
 
-    .dropdown {
-        background: #EEEEEE;
-        color: black;
-        font-size: 14px;
-        font-weight: bold;
-        font-family: 'Poppins', sans-serif;
-        border: 2px solid #EEEEEE;
-        padding: 10px 16px;
-        border-radius: 24px 0 0 24px; /* Rounded left edge */
-        cursor: pointer;
-        outline: none;
-        width: 120px;
-    }
-    .search-input {
-        font-size: 14px;
-        font-family: 'Poppins', sans-serif;
-        color: black;
-        border: none;
-        background: transparent;
-        flex: 1;
-        padding: 10px;
-        outline: none;
-    }
+        .menu {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+            padding: 0;
+        }
 
-    .search-button {
-        background: transparent;
-        border: none;
-        color: #DC0856;
-        font-size: 18px;
-        padding: 10px 14px;
-        cursor: pointer;
-        border-radius: 0 24px 24px 0; /* Rounded right edge */
-    }
+        .menu a {
+            text-decoration: none;
+            color: black;
+            font-size: 18px;
+            font-weight: bolder;
+        }
 
-    .material-symbols-outlined {
-        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-    }
+        .menu a:hover {
+            color: #DC0856;
+        }
 
-      .nav-icons {
-        display: flex;
-        align-items: center;
-        margin-left: 25px;
-      }
+        /* 🔍 Search Bar */
+        .search-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 18px;
+            flex-grow: 1;
+            margin-left: 15px;
+        }
 
-      .nav-icons a {
-        margin-left: 15px;
-        width: 28px;
-        height: 28px;
-        display: inline-flex;
-      }
+        .search-bar {
+            display: flex;
+            align-items: center;
+            background: white;
+            border-radius: 24px;
+            width: 320px;
+            height: 40px;
+            border: 1.5px solid black;
+            padding: 0 10px;
+        }
 
-      .nav-icons a:hover svg {
-        fill: #DC0856;
-      }
+        .search-input {
+            flex: 1;
+            border: none;
+            background: transparent;
+            outline: none;
+            font-size: 14px;
+        }
 
-      .nav-icons svg {
-        fill: black;
-        width: 100%;
-        height: 100%;
-        transition: fill 0.3s;
-      }
+        .search-button {
+            background: transparent;
+            border: none;
+            color: #DC0856;
+            cursor: pointer;
+            font-size: 18px;
+        }
 
-      .nav-icons span {
-        margin: 0 20px 0 30px;
-        font-size: 26px;
-        color: #DC0856;
-      }
+        .advanced-search-btn {
+            background: #DC0856;
+            color: white;
+            border: none;
+            font-size: 14px;
+            font-weight: bolder;
+            padding: 10px 16px;
+            margin-left: 2px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
 
-      .account {
-        width: 32px;
-        height: 32px;
-        border-radius: 50%;
-        object-fit: cover;
-        margin-left: 6px;
-        margin-top: -4px;
-     }
+        .advanced-search-btn:hover {
+            background: black;
+        }
 
-     /* .profile-photo {*/
-     /*   width: 32px;*/
-     /*   height: 32px;*/
-     /*   border-radius: 50%;*/
-     /*   object-fit: cover;*/
-     /*   margin-left: 6px;*/
-     /*   margin-top: -6px;*/
-     /*   border: 2px solid black;*/
-     /*}*/
+        /* 🔥 Right Section: Icons & User Info */
+        .right-nav {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-shrink: 0;
+        }
 
-      .user svg {
-        fill: white;
-        padding-left: 2px;
-      }
+        .nav-icons {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            margin-top: 10px;
+        }
 
-      .user {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 30px;
-        white-space: nowrap;
-        margin-right: 40px;
-      }
+        .nav-icons svg {
+            width: 28px;
+            height: 28px;
+            fill: black;
+            transition: fill 0.3s;
+        }
 
-      .user li {
-        list-style-type: none;
-        padding-top: 9px;
-        margin: 0;
-      }
+        .nav-icons a:hover svg {
+            fill: #DC0856;
+            display: inline-flex;
+        }
 
-      .line {
-        margin: 0 8px;
-      }
+        .nav-icons span {
+            margin: 0 10px 0 10px;
+            font-size: 26px;
+            color: #DC0856;
+        }
+
+        .user {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .user a {
+            text-decoration: none;
+            color: black;
+            font-size: 18px;
+            font-weight: bolder;
+        }
+
+        .user a:hover {
+            color: #DC0856;
+        }
+
+        .account {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+        }
+
+        /* 🔥 Advanced Search Popup */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .popup {
+            background: white;
+            padding: 20px;
+            width: 400px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            text-align: left;
+        }
+
+        .popup h2 {
+            margin: 0 0 15px;
+            font-size: 20px;
+        }
+
+        .popup label {
+            font-size: 14px;
+            font-weight: bold;
+            color: black;
+            display: block;
+            margin-bottom: 5px;
+            width: 95%;
+        }
+
+        .popup select {
+            width: 98%;
+            padding: 8px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .popup input {
+            width: 94%;
+            padding: 8px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        /* 🔥 Date Range */
+        .date-range {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .date-range input {
+            width: 48%;
+        }
+
+        .date-range span {
+            justify-content: center;
+            align-items: center;
+            margin-top: 5px;
+        }
+
+        .popup-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        .cancel-btn {
+            background: lightgrey;
+            color: black;
+            border: none;
+            padding: 8px 12px;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .apply-btn {
+            background: black;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .apply-btn:hover {
+            background: #DC0856;
+        }
+
     </style>
 </head>
 
 <body>
     <nav>
-      <div class="left-nav flex-center">
-        <div class="logo">
-          <img src="/static/logo/TTT-logo1.png" alt="logo">
+        <!-- Left Section: Logo & Menu -->
+        <div class="left-nav">
+            <div class="logo">
+                <img src="/static/logo/TTT-logo3.png" alt="logo">
+            </div>
+            <ul class="menu">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Movies</a></li>
+                <li><a href="#">Series</a></li>
+                <li><a href="#">Drama</a></li>
+            </ul>
         </div>
-        <div class="menu">
-          <ul>
-            <li class="menu-text"><a href="{% url '//' %}">Home</a></li>
-            <li class="menu-text"><a href="{% url '//' %}">Movies</a></li>
-            <li class="menu-text"><a href="{% url '//' %}">Series</a></li>
-            <li class="menu-text"><a href="{% url '//' %}">Drama</a></li>
-          </ul>
+
+        <!-- Center Section: Search Bar -->
+        <div class="search-container">
+            <div class="search-bar">
+                <input type="text" class="search-input" placeholder="Search...">
+                <button class="search-button">
+                    <span class="material-symbols-outlined">search</span>
+                </button>
+            </div>
+            <button class="advanced-search-btn" onclick="openPopup()">Advanced Search</button>
         </div>
-      </div>
 
-      <div class="search-container">
-          <label>
-              <select class="dropdown">
-                  <option value="" selected disabled>Select</option>
-                  <option>Definition</option>
-                  <option>Cast</option>
-                  <option>Status</option>
-                  <option>Platform</option>
-              </select>
-          </label>
-          <input type="text" class="search-input" placeholder=" Search...">
-          <button class="search-button">
-              <span class="material-symbols-outlined">search</span>
-          </button>
-      </div>
+        <!-- Right Section: Icons & User Info -->
+        <div class="right-nav">
+            <div class="nav-icons">
+                <a href="#" class="commu-icon"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M880-80 720-240H320q-33 0-56.5-23.5T240-320v-40h440q33 0 56.5-23.5T760-440v-280h40q33 0 56.5 23.5T880-640v560ZM160-473l47-47h393v-280H160v327ZM80-280v-520q0-33 23.5-56.5T160-880h440q33 0 56.5 23.5T680-800v280q0 33-23.5 56.5T600-440H240L80-280Zm80-240v-280 280Z"/></svg></a>
 
+                <a href="#" class="bookmark-icon"><svg class="bookmark-icon" viewBox="0 0 512 512" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <g id="Layer_1"/><g id="Layer_2">
+                    <g><path class="st0" d="M112.9,43.5v344.14L256,468.5l143.1-80.86V43.5H112.9z M340.55,211.58l-35.15,30.74    c-2.35,2.06-3.38,5.23-2.69,8.28l10.37,45.53c1.66,7.28-6.22,13.01-12.63,9.18l-40.09-23.94c-2.68-1.6-6.02-1.6-8.71,0    l-40.09,23.94c-6.41,3.83-14.29-1.89-12.63-9.18l10.37-45.53c0.69-3.04-0.34-6.22-2.69-8.28l-35.15-30.74    c-5.62-4.92-2.62-14.18,4.82-14.85l46.51-4.2c3.11-0.28,5.81-2.25,7.04-5.12l18.37-42.93c2.94-6.87,12.67-6.87,15.61,0    l18.37,42.93c1.23,2.87,3.93,4.84,7.04,5.12l46.51,4.2C343.16,197.41,346.17,206.67,340.55,211.58z"/></g>
+                </g>
+                </svg>
+                </a>
 
+                <a href="{% url '//' %}" class="noti-icon"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368">
+                    <path d="M160-200v-80h80v-280q0-83 50-147.5T420-792v-28q0-25 17.5-42.5T480-880q25 0 42.5 17.5T540-820v28q80 20 130 84.5T720-560v280h80v80H160Zm320-300Zm0 420q-33 0-56.5-23.5T400-160h160q0 33-23.5 56.5T480-80ZM320-280h320v-280q0-66-47-113t-113-47q-66 0-113 47t-47 113v280Z"/>
+                </svg>
+                </a>
 
-      <div class="nav-icons">
-          <a href="{% url '//' %}">
-              <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368">
-                  <path d="M880-80 720-240H320q-33 0-56.5-23.5T240-320v-40h440q33 0 56.5-23.5T760-440v-280h40q33 0 56.5 23.5T880-640v560ZM160-473l47-47h393v-280H160v327ZM80-280v-520q0-33 23.5-56.5T160-880h440q33 0 56.5 23.5T680-800v280q0 33-23.5 56.5T600-440H240L80-280Zm80-240v-280 280Z"/>
-              </svg>
-          </a>
-
-          <a href="#" class="bookmark-icon">
-              <svg class="bookmark-icon" viewBox="0 0 512 512" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                  <g id="Layer_1"/><g id="Layer_2">
-                  <g><path class="st0" d="M112.9,43.5v344.14L256,468.5l143.1-80.86V43.5H112.9z M340.55,211.58l-35.15,30.74    c-2.35,2.06-3.38,5.23-2.69,8.28l10.37,45.53c1.66,7.28-6.22,13.01-12.63,9.18l-40.09-23.94c-2.68-1.6-6.02-1.6-8.71,0    l-40.09,23.94c-6.41,3.83-14.29-1.89-12.63-9.18l10.37-45.53c0.69-3.04-0.34-6.22-2.69-8.28l-35.15-30.74    c-5.62-4.92-2.62-14.18,4.82-14.85l46.51-4.2c3.11-0.28,5.81-2.25,7.04-5.12l18.37-42.93c2.94-6.87,12.67-6.87,15.61,0    l18.37,42.93c1.23,2.87,3.93,4.84,7.04,5.12l46.51,4.2C343.16,197.41,346.17,206.67,340.55,211.58z"/></g>
-              </g>
-              </svg>
-          </a>
-
-          <a href="{% url '//' %}">
-              <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368">
-                  <path d="M160-200v-80h80v-280q0-83 50-147.5T420-792v-28q0-25 17.5-42.5T480-880q25 0 42.5 17.5T540-820v28q80 20 130 84.5T720-560v280h80v80H160Zm320-300Zm0 420q-33 0-56.5-23.5T400-160h160q0 33-23.5 56.5T480-80ZM320-280h320v-280q0-66-47-113t-113-47q-66 0-113 47t-47 113v280Z"/>
-              </svg>
-          </a>
-
-          <a href="{% url '//' %}">
-              <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368">
-                  <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/>
-              </svg>
-          </a>
-          <span class="line">|</span>
-          <div class="user">
-              <li class="menu-text"><a href="../registration/login.html">Log in</a></li>
-              <li class="menu-text"><a href="../registration/signup.html">Sign up</a></li>
-          </div>
-
-<!--          <h3 class="name">NichaParich02</h3>-->
-
-          <a href="{% url '//' %}">
-	        <img src="/static/icons/user.png" alt="Profile Photo" class="account">
-          </a>
-<!--          <a href="{% url '//' %}">-->
-<!--	        <img src="../static/icons/NichaParich.png" alt="Profile Photo" class="profile-photo">-->
-<!--          </a>-->
-      </div>
+                <a href="{% url '//' %}" class="other-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368">
+                        <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/>\
+                    </svg>
+                </a>
+                <span class="line">|</span>
+            </div>
+            <div class="user">
+                <a href="#">Log in</a>
+                <a href="#">Sign up</a>
+            </div>
+<!--            <h3 class="name">NichaParich02</h3>-->
+            <a href="{% url '//' %}">
+                <img src="/static/icons/user.png" alt="Profile Photo" class="account">
+            </a>
+<!--            <a href="{% url '//' %}">-->
+<!--                <img src="../static/icons/NichaParich.png" alt="Profile Photo" class="profile-photo">-->
+<!--            </a>-->
+        </div>
     </nav>
 
+    <!-- 🔍 Advanced Search Popup -->
+    <div class="popup-overlay" id="popupOverlay" style="display: none;">
+        <div class="popup">
+            <h2>Advanced Search</h2>
+            <label>Genre:</label>
+                <select>
+                    <option value="" disabled selected>Select Genre</option>
+                    <option>Action</option>
+                    <option>Adventure</option>
+                    <option>Animation</option>
+                    <option>Comedy</option>
+                    <option>Crime</option>
+                    <option>Documentary</option>
+                    <option>Drama</option>
+                    <option>Family</option>
+                    <option>Fantasy</option>
+                    <option>History</option>
+                    <option>Horror</option>
+                    <option>Music</option>
+                    <option>Mystery</option>
+                    <option>Romance</option>
+                    <option>Science Fiction</option>
+                    <option>Thriller</option>
+                    <option>TV Movie</option>
+                    <option>War</option>
+                    <option>Western</option>
+                </select>
+            <label>Cast:</label>
+            <input type="text" placeholder="Enter cast name">
+            <label>Description:</label>
+            <input type="text" placeholder="Enter description">
+            <label>Published Date:</label>
+            <div class="date-range">
+                <input type="date" id="start-date">
+                <span>-</span>
+                <input type="date" id="end-date">
+            </div>
+            <div class="popup-actions">
+                <button class="cancel-btn" onclick="closePopup()">Cancel</button>
+                <button class="apply-btn">Apply</button>
+            </div>
+        </div>
+    </div>
+
     <script>
-        function handleKeyPress(event) {
-            if (event.key === "Enter") {
-                startSearch();
-            }
-        }
-
-        function startSearch() {
-            const category = document.getElementById("category").value;
-            const query = document.getElementById("searchQuery").value;
-            if (query.trim() !== "") {
-                alert(`Searching for "${query}" in ${category}`);
-                // Redirect to search results or perform search logic here
-            }
-        }
+        function openPopup() { document.getElementById("popupOverlay").style.display = "flex"; }
+        function closePopup() { document.getElementById("popupOverlay").style.display = "none"; }
     </script>
-
-
-
-
 </body>
 </html>
+
+
+
+
+
+
+
