@@ -637,9 +637,40 @@
         console.log("🔴 Closing popup...");
         document.getElementById("popupOverlay").style.display = "none";
     }
+    </script>
+    <script>
+        // Add click event to toggle the heart state
+            document.querySelectorAll('.heart-button').forEach(button => {
+                button.addEventListener('click', () => {
+                    button.classList.toggle('filled');
+                });
+            });
 
+            // Carousel controls
+            const carousel = document.getElementById('genre-carousel');
+            const prev = document.getElementById('prev-nav'); // Correct IDs
+            const next = document.getElementById('next-nav');
+
+            if (carousel && prev && next) {
+                const scrollAmount = carousel.offsetWidth;
+
+                next.addEventListener('click', () => {
+                    if (carousel.scrollLeft + scrollAmount >= carousel.scrollWidth - scrollAmount) {
+                        carousel.scrollTo({ left: 0, behavior: 'smooth' });
+                    } else {
+                        carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                    }
+                });
+
+                prev.addEventListener('click', () => {
+                    if (carousel.scrollLeft === 0) {
+                        carousel.scrollTo({ left: carousel.scrollWidth, behavior: 'smooth' });
+                    } else {
+                        carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+                    }
+                });
+            }
     </script>
     <script src="img-slider.js" defer></script>
-
 </body>
 </html>
