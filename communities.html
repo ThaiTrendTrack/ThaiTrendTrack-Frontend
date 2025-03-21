@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Communities - ThaiTrendTrack</title>
+    <link rel="stylesheet" href="homepage.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@200&family=Roboto+Condensed&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<style>
+    /* General Styling */
+    body {
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        background-color: white;
+    }
+
+    /* Main Layout */
+    .main {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        top: 20px;
+    }
+
+    h2 , .commu-section {
+        color: #222;
+        font-size: 28px;
+        font-weight: 700;
+        margin-top: 15px;
+        margin-left: 10px;
+    }
+
+    .community-container {
+        width: 1100px;
+        display: flex;
+        gap: 20px;
+    }
+
+    /* Left Column - Community Posts */
+    .left-section {
+        flex: 1;
+    }
+
+    /* Sub Navbar - Home & Explore */
+    .sub-navbar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 50px;
+        font-size: 22px;
+        font-weight: bold;
+        padding-bottom: 15px;
+        border-bottom: 2px solid #ccc;
+        margin-top: -10px;
+    }
+
+    /* Sub Navbar Links */
+    .sub-nav-item {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: black;
+        transition: 0.3s;
+    }
+
+    .sub-nav-item:hover, .sub-nav-item.active {
+        color: #DC0856;
+    }
+
+    .sub-nav-icon {
+        margin-right: 8px;
+    }
+
+    /* Genre Navbar */
+    .genre-navbar {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 20px;
+        padding: 10px 0;
+        background: white;
+    }
+
+    .genre-container {
+        overflow: hidden;
+        width: 80%;
+    }
+
+    .genre-list {
+        display: flex;
+        gap: 15px;
+        white-space: nowrap;
+        transition: transform 0.3s ease;
+    }
+
+    .genre-item {
+        padding: 10px 20px;
+        font-size: 18px;
+        font-weight: 600;
+        background: #eee;
+        border-radius: 20px;
+        text-decoration: none;
+        color: black;
+        transition: 0.3s;
+    }
+
+    .genre-item:hover {
+        background: #DC0856;
+        color: white;
+    }
+
+    /* Adjust Navbar Buttons */
+    .nav-btn {
+        background: none;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+    /* Post Section */
+    .post-section {
+        display: flex;
+        align-items: center;
+        background: white;
+        padding: 15px;
+        margin: 20px auto;
+        width: 80%;
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    /* User Avatar */
+    .user-avatar {
+        width: 48px;
+        height: 50px;
+        border-radius: 50%;
+        margin-right: 10px;
+    }
+
+    /* Post Input */
+    .post-input {
+        display: flex;
+        flex: 1;
+        align-items: center;
+        background: #f5f5f5;
+        border-radius: 8px;
+        padding: 8px;
+    }
+
+    /* Dropdown */
+    .audience-dropdown {
+        border: none;
+        background: transparent;
+        font-size: 14px;
+        font-weight: bold;
+        margin-right: 10px;
+    }
+
+    /* Post Textbox */
+    .post-text {
+        border: none;
+        width: 100%;
+        background: transparent;
+        font-size: 14px;
+        outline: none;
+    }
+
+    /* Icons Section */
+    .post-icons {
+        display: flex;
+        gap: 12px;
+        margin-left: 12px;
+    }
+
+    .icon {
+        font-size: 18px;
+        color: #666;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .icon:hover {
+        color: #DC0856;
+    }
+
+    /* Post Button */
+    .post-btn {
+        background: #DC0856;
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 8px;
+        cursor: pointer;
+        margin-left: 12px;
+    }
+
+    <!--    /* ✅ Post Display Section */-->
+    .post-display {
+        display: flex;
+        flex-direction: column;
+        background: white;
+        padding: 20px;
+        width: 79%;
+        max-height: 550px;
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        margin: 35px auto auto;
+    }
+
+    .post-header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .post-meta {
+        font-size: 14px;
+        color: gray;
+    }
+
+    .post-content {
+        margin-top: 15px;
+        font-size: 16px;
+    }
+
+    /* Interaction Buttons */
+    .post-actions {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-top: 10px;
+    }
+
+    .post-actions i {
+        font-size: 18px;
+        color: #DC0856;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .post-actions i:hover {
+        transform: scale(1.1);
+    }
+
+    .post-actions span {
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    /* Comment Section */
+    .comment-box {
+        margin-top: 10px;
+        padding: 10px;
+        background: #f9f9f9;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+        max-height: 250px;
+        overflow-y: auto;
+    }
+
+    .comment {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .comment-text {
+        font-size: 14px;
+    }
+
+    .comment-time {
+        font-size: 12px;
+        color: gray;
+    }
+
+
+
+   /* section */
+
+    .black-text {
+        color: black;
+    }
+
+    /* movie */
+
+        .sub-name {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .description {
+            margin: 12px 0;
+            font-size: 18px;
+        }
+
+        .movie {
+            height: 525px;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            margin-top: 30px;
+            margin-bottom: 16px;
+        }
+
+        .movie img {
+            width: 275px;
+            height: auto;
+            object-fit: cover;
+            border-radius: 7px;
+        }
+
+        .detail {
+            /*flex-direction: column;*/
+            margin-left: 20px;
+            margin-bottom: 100px;
+            display: inline-block;
+            /*display: flex;*/
+            justify-content: space-between;
+            align-items: end;
+        }
+
+
+        .overview {
+            /*margin: 10px 0;*/
+            margin-top: -20px;
+            font-size: 16px;
+        }
+
+
+        /* fav */
+
+       .comment-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+       }
+
+       .fav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+
+       }
+
+       .fav svg {
+            width: 32px;
+            height: 32px;
+            fill: #B3B3B3;
+            transition: fill 0.2s ease;
+       }
+
+       .fav.is-favorite svg {
+            fill: #DC0856;
+       }
+
+
+       .fav:hover {
+            background-color: transparent;
+            transform: scale(1.1);
+       }
+
+       .stats {
+           display: flex;
+           align-items: center;
+           gap: 15px;
+           margin-top: -15px;
+           font-size: 14px;
+        }
+
+       .comments-icon , .views-icon {
+           max-width: 30px;
+           max-height: 30px;
+           object-fit: contain;
+           display: block;
+           border-radius: 0; !important;
+        }
+
+       .custom-line {
+            width: 100%;
+            height: 2px;
+            background-color: gray;
+            margin-top: 25px;
+            margin-bottom: 15px;
+       }
+
+       /* comment */
+       .comment {
+            flex-direction: row;
+       }
+
+       .comment-detail {
+            flex-direction: row;
+            justify-content: space-between;
+       }
+
+       .comment-form {
+            display: flex;
+            grid-template-columns: 0.3fr 6fr;
+            margin-top: 10px;
+            margin-bottom: -20px;
+            justify-content: left;
+            width: 100%;
+            height: auto;
+       }
+
+       form {
+            justify-content: left;
+       }
+
+
+       .username-text, .datetime-text {
+           font-weight: bolder;
+       }
+
+       form button {
+            background-color: transparent;
+            width: 25px;
+            height: auto;
+            font-size: 15px;
+            font-family: 'Roboto Condensed', sans-serif;
+            border: black;
+            cursor: pointer;
+            padding-left: 5px;
+       }
+
+       .user-profile svg {
+            width: 40px;
+            height: auto;
+            fill: black;
+       }
+
+       form button svg {
+            display: flex;
+            fill: black;
+            width: 28px;
+            height: auto;
+        }
+
+       form button svg:hover {
+            fill: #DC0856;
+       }
+
+
+       form input[type=text]{
+            height: 10px;
+            width: 185%;
+            border-radius: 40px;
+            padding: 12.5px;
+            justify-content: right;
+            align-items: center;
+            background-color: rgba(255,255,255,0.2);
+            font-family: 'Roboto Condensed', sans-serif;
+            color: black;
+            padding-left: 20px;
+            font-size: 18px;
+            margin-left: 20px;
+        }
+
+       .comment-submit {
+            position: relative;
+            top: -40px;
+            left: 485px;
+            background-color: transparent;
+            width: 40px;
+            height: 40px;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+       .comment-submit svg {
+            fill: black;
+            width: 24px;
+            height: 24px;
+            transition: fill 0.2s ease;
+       }
+
+       .comment-submit svg:hover {
+            fill: #DC0856;
+       }
+
+       .comment {
+            margin-bottom: 5px;
+            justify-content: left;
+            display: grid;
+            grid-template-columns: 0.3fr 6fr;
+        }
+
+       .comment-form .account {
+            width: 40px;
+            height: 40px;
+            object-fit: cover;
+            margin-bottom: 15px;
+       }
+
+
+       .comment .account {
+            width: 30px;
+            height: auto;
+            fill: black;
+            margin-top: 15px;
+        }
+
+       .comment-text {
+            margin-left: 10px;
+        }
+
+       /* Comment Box Scrollable Section */
+       .comment-box {
+            max-height: 150px;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+       }
+
+        /* Force scrollbar visibility even when content is small */
+        .comment-box::-webkit-scrollbar {
+            width: 10px;
+            background-color: #f1f1f1;
+        }
+
+        .comment-box::-webkit-scrollbar-thumb {
+            background-color: #888;
+            border-radius: 4px;
+        }
+
+        .comment-box::-webkit-scrollbar-thumb:hover {
+            background-color: #555;
+        }
+
+        .comment-box::-webkit-scrollbar-track {
+            background-color: #e0e0e0;
+        }
+
+       .comment-section {
+            height: 100%;
+       }
+
+       .comment-body {
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+            word-break: break-word;
+            margin-top: -8px ;
+       }
+
+</style>
+<body>
+
+    <!-- Navbar Placeholder -->
+    <div id="navbar-placeholder"></div>
+
+    <div class="main">
+        <div class="empty"></div>
+        <div class="content">
+            <div class="community-container">
+
+                <!-- Left Column - Community Posts -->
+                <div class="left-section">
+                    <h2 class="commu-section"><i class="fas fa-users" style="color:#DC0856;"></i> Communities</h2>
+
+                     <!-- Sub Navbar (Home & Explore) -->
+                    <div class="sub-navbar">
+                        <a href="#" class="sub-nav-item active">
+                            <i class="fas fa-home sub-nav-icon"></i> Home
+                        </a>
+                        <span class="divider">|</span>
+                        <a href="#" class="sub-nav-item">
+                            <i class="fas fa-search sub-nav-icon"></i> Explore
+                        </a>
+                    </div>
+                    <!-- Genre Categories Navbar -->
+                    <div class="genre-navbar">
+                        <button id="prev-nav" class="nav-btn"><i class="fas fa-chevron-left"></i></button>
+                        <div class="genre-container">
+                            <div class="genre-list" id="genre-carousel">
+                                <a href="#" class="genre-item">Action Club</a>
+                                <a href="#" class="genre-item">Comedy Club</a>
+                                <a href="#" class="genre-item">Crime Club</a>
+                                <a href="#" class="genre-item">Drama Club</a>
+                                <a href="#" class="genre-item">Horror Club</a>
+                                <a href="#" class="genre-item">Romance Club</a>
+                            </div>
+                        </div>
+                        <button id="next-nav" class="nav-btn"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+
+                    <!-- Post Section -->
+                    <div class="post-section">
+                        <img src="static/profile/profile-3.jpeg" alt="User" class="user-avatar">
+                        <div class="post-input">
+                            <label>
+                                <select class="audience-dropdown">
+                                    <option value="" disabled selected>Choose Audience</option>
+                                    <option>Action Club</option>
+                                    <option>Comedy Club</option>
+                                    <option>Crime Club</option>
+                                    <option>Drama Club</option>
+                                    <option>Horror Club</option>
+                                    <option>Romance Club</option>
+                                </select>
+                            </label>
+                            <label>
+                                <input type="text" placeholder="What is happening?!" class="post-text">
+                            </label>
+                        </div>
+                        <!-- Icons before Post Button -->
+                        <div class="post-icons">
+                            <i class="fas fa-hashtag icon"></i>
+                            <i class="fas fa-image icon"></i>
+                            <i class="fas fa-chart-bar icon"></i>
+                        </div>
+                        <button class="post-btn">Post</button>
+                    </div>
+
+
+                    <!-- ✅ Post Display Section1 -->
+                    <div class="post-display">
+                        <span class="club-group" style="font-size: 16px"><i class="fas fa-users" style="color:#DC0856;"></i>            Comedy Club</span>
+                        <br>
+                        <div class="post-header">
+                            <img src="static/profile/profile4.jpeg" alt="User" class="user-avatar" style="width: 40px; height: 40px;">
+                            <span>TadThpn</span>
+                            <span class="post-meta">• 8:27 PM • Dec 23, 2023</span>
+                        </div>
+
+                        <section class="movie white-text">
+                            <div class="movie-img">
+                                <img src="static/commu-post/notfriends.jpg" alt="Post Image">
+                            </div>
+                            <div class="post-content">
+                                <div class="detail flex">
+                                    <p class="overview black-text" id="postOverview"> It is really a great film about
+                                        joe, the ingenious screenplay gradually reveal how the ordinary but sunny
+                                        character guy is loved and missed by his friends and deeply by Bokeh
+                                        around him.🩵🫶🏻
+                                    </p>
+                                    <div class="custom-line"></div>
+                                    <div class="comment-section">
+                                        <div class="comment-title">
+                                            <div class="stats">
+                                                <button class="fav PLACEHOLDER_IS_FAVORITE_CLASS black-text" id="favoriteButton"
+                                                        data-model="character" data-object-id="PLACEHOLDER_CHARACTER_ID">
+                                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="32" height="32">
+                                                             <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                                                         </svg>
+                                                </button>
+                                                <h3 class="black-text">97</h3>
+
+                                                <img src="/static/icons/blog.png" alt="comments-icon" class="comments-icon">
+                                                <h3 class="black-text">23</h3>
+
+                                                <img src="/static/icons/bar-chart.png" alt="engage-icon" class="views-icon">
+                                                <h3 class="black-text">1987</h3>
+                                            </div>
+                                        </div>
+                                        <div class="comment-form">
+                                            <img src="/static/icons/user.png" alt="Profile Photo" class="account">
+                                            <form method="post" class="flex align-items-center" id="commentForm">
+                                                <input type="text" name="user_comment" placeholder="Add a comment..." class="comment-input">
+                                                <button type="submit" class="comment-submit">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
+                                                        <path d="M120-160v-640l760 320-760 320Zm80-120 474-200-474-200v140l240 60-240 60v140Zm0 0v-400 400Z"></path>
+                                                    </svg>
+                                                </button>
+                                            </form>
+                                        </div>
+
+                                        <div class="comment-box">
+                                            <!-- Example comment -->
+                                            <div class="comment">
+                                                <img src="/static/icons/user.png" alt="Profile Photo" class="account">
+                                                <div class="comment-text black-text">
+                                                    <div class="comment-detail flex">
+                                                        <p class="username-text">Jetaime_op</p>
+                                                        <p class="datetime-text">8:09 PM · Dec 23, 2024 </p>
+                                                    </div>
+                                                    <div class="comment-body">love this movie!!</div>
+                                                </div>
+
+                                                <img src="/static/icons/user.png" alt="Profile Photo" class="account">
+                                                <div class="comment-text black-text">
+                                                    <div class="comment-detail flex">
+                                                        <p class="username-text">junior.np</p>
+                                                        <p class="datetime-text">8:21 PM · Dec 23, 2024 </p>
+                                                    </div>
+                                                    <div class="comment-body">love this movie!!</div>
+                                                </div>
+
+                                                <img src="/static/icons/user.png" alt="Profile Photo" class="account">
+                                                <div class="comment-text black-text">
+                                                    <div class="comment-detail flex">
+                                                        <p class="username-text">tanont916</p>
+                                                        <p class="datetime-text">8:32 PM · Dec 23, 2024 </p>
+                                                    </div>
+                                                    <div class="comment-body">love this movie!!</div>
+                                                </div>
+
+                                                <img src="/static/icons/user.png" alt="Profile Photo" class="account">
+                                                <div class="comment-text black-text">
+                                                    <div class="comment-detail flex">
+                                                        <p class="username-text">_pawwie00</p>
+                                                        <p class="datetime-text">8:53 PM · Dec 23, 2024 </p>
+                                                    </div>
+                                                    <div class="comment-body">love this movie!!</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+
+                    <!-- ✅ Post Display Section2 -->
+                    <div class="post-display">
+                        <span class="club-group" style="font-size: 16px"><i class="fas fa-users" style="color:#DC0856;"></i>            Drama Club</span>
+                        <br>
+                        <div class="post-header">
+                            <img src="static/profile/profile-3.jpeg" alt="User" class="user-avatar" style="width: 40px; height: 40px;">
+                            <span>Jetaime_op</span>
+                            <span class="post-meta">• 9:03 PM • Dec 23, 2023</span>
+                        </div>
+
+                        <section class="movie white-text">
+                            <div class="movie-img">
+                                <img src="static/commu-post/lannmah1.jpg" alt="Post Image">
+                            </div>
+                            <div class="post-content">
+                                <div class="detail flex">
+                                    <p class="overview black-text" id="postOverview"> There are things in life more
+                                        important than money, but sometimes we lose sight of that, unwittingly
+                                        allowing our perspectives to become seriously skewed.
+                                    </p>
+                                    <div class="custom-line"></div>
+                                    <div class="comment-section">
+                                        <div class="comment-title">
+                                            <div class="stats">
+                                                <button class="fav PLACEHOLDER_IS_FAVORITE_CLASS black-text" id="favoriteButton"
+                                                        data-model="character" data-object-id="PLACEHOLDER_CHARACTER_ID">
+                                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="32" height="32">
+                                                             <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                                                         </svg>
+                                                </button>
+                                                <h3 class="black-text">97</h3>
+
+                                                <img src="/static/icons/blog.png" alt="comments-icon" class="comments-icon">
+                                                <h3 class="black-text">23</h3>
+
+                                                <img src="/static/icons/bar-chart.png" alt="engage-icon" class="views-icon">
+                                                <h3 class="black-text">1987</h3>
+                                            </div>
+                                        </div>
+                                        <div class="comment-form">
+                                            <img src="/static/icons/user.png" alt="Profile Photo" class="account">
+                                            <form method="post" class="flex align-items-center" id="commentForm">
+                                                <input type="text" name="user_comment" placeholder="Add a comment..." class="comment-input">
+                                                <button type="submit" class="comment-submit">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
+                                                        <path d="M120-160v-640l760 320-760 320Zm80-120 474-200-474-200v140l240 60-240 60v140Zm0 0v-400 400Z"></path>
+                                                    </svg>
+                                                </button>
+                                            </form>
+                                        </div>
+
+                                        <div class="comment-box">
+                                            <!-- Example comment -->
+                                            <div class="comment">
+                                                <img src="/static/icons/user.png" alt="Profile Photo" class="account">
+                                                <div class="comment-text black-text">
+                                                    <div class="comment-detail flex">
+                                                        <p class="username-text">junior.np</p>
+                                                        <p class="datetime-text">8:09 PM · Dec 23, 2024 </p>
+                                                    </div>
+                                                    <div class="comment-body">love this movie!!</div>
+                                                </div>
+
+                                                <img src="/static/icons/user.png" alt="Profile Photo" class="account">
+                                                <div class="comment-text black-text">
+                                                    <div class="comment-detail flex">
+                                                        <p class="username-text">TadThpn</p>
+                                                        <p class="datetime-text">8:21 PM · Dec 23, 2024 </p>
+                                                    </div>
+                                                    <div class="comment-body">love this movie!!</div>
+                                                </div>
+
+                                                <img src="/static/icons/user.png" alt="Profile Photo" class="account">
+                                                <div class="comment-text black-text">
+                                                    <div class="comment-detail flex">
+                                                        <p class="username-text">tanont916</p>
+                                                        <p class="datetime-text">8:32 PM · Dec 23, 2024 </p>
+                                                    </div>
+                                                    <div class="comment-body">love this movie!!</div>
+                                                </div>
+
+                                                <img src="/static/icons/user.png" alt="Profile Photo" class="account">
+                                                <div class="comment-text black-text">
+                                                    <div class="comment-detail flex">
+                                                        <p class="username-text">_pawwie00</p>
+                                                        <p class="datetime-text">8:53 PM · Dec 23, 2024 </p>
+                                                    </div>
+                                                    <div class="comment-body">love this movie!!</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+
+                    <!-- ✅ Post Display Section3 -->
+                    <div class="post-display">
+                        <span class="club-group" style="font-size: 16px"><i class="fas fa-users" style="color:#DC0856;"></i>            Romance Club</span>
+                        <br>
+                        <div class="post-header">
+                            <img src="static/profile/profile2.jpeg" alt="User" class="user-avatar" style="width: 40px; height: 40px;">
+                            <span>junior.np</span>
+                            <span class="post-meta">• 9:49 PM • Dec 23, 2023</span>
+                        </div>
+
+                        <section class="movie white-text">
+                            <div class="movie-img">
+                                <img src="static/commu-post/you&me&me.jpg" alt="Post Image">
+                            </div>
+                            <div class="post-content">
+                                <div class="detail flex">
+                                    <p class="overview black-text" id="postOverview"> Feeling nostalgic? 'You, Me,
+                                        and Us' will transport us back to the late '90s with its captivating storyline
+                                        and memorable characters. 🎥✨
+                                    </p>
+                                    <div class="custom-line"></div>
+                                    <div class="comment-section">
+                                        <div class="comment-title">
+                                            <div class="stats">
+                                                <button class="fav PLACEHOLDER_IS_FAVORITE_CLASS black-text" id="favoriteButton"
+                                                        data-model="character" data-object-id="PLACEHOLDER_CHARACTER_ID">
+                                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="32" height="32">
+                                                             <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                                                         </svg>
+                                                </button>
+                                                <h3 class="black-text">97</h3>
+
+                                                <img src="/static/icons/blog.png" alt="comments-icon" class="comments-icon">
+                                                <h3 class="black-text">23</h3>
+
+                                                <img src="/static/icons/bar-chart.png" alt="engage-icon" class="views-icon">
+                                                <h3 class="black-text">1987</h3>
+                                            </div>
+                                        </div>
+                                        <div class="comment-form">
+                                            <img src="/static/icons/user.png" alt="Profile Photo" class="account">
+                                            <form method="post" class="flex align-items-center" id="commentForm">
+                                                <input type="text" name="user_comment" placeholder="Add a comment..." class="comment-input">
+                                                <button type="submit" class="comment-submit">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
+                                                        <path d="M120-160v-640l760 320-760 320Zm80-120 474-200-474-200v140l240 60-240 60v140Zm0 0v-400 400Z"></path>
+                                                    </svg>
+                                                </button>
+                                            </form>
+                                        </div>
+
+                                        <div class="comment-box">
+                                            <!-- Example comment -->
+                                            <div class="comment">
+                                                <img src="/static/icons/user.png" alt="Profile Photo" class="account">
+                                                <div class="comment-text black-text">
+                                                    <div class="comment-detail flex">
+                                                        <p class="username-text">Jetaime_op</p>
+                                                        <p class="datetime-text">8:09 PM · Dec 23, 2024 </p>
+                                                    </div>
+                                                    <div class="comment-body">love this movie!!</div>
+                                                </div>
+
+                                                <img src="/static/icons/user.png" alt="Profile Photo" class="account">
+                                                <div class="comment-text black-text">
+                                                    <div class="comment-detail flex">
+                                                        <p class="username-text">TadThpn</p>
+                                                        <p class="datetime-text">8:21 PM · Dec 23, 2024 </p>
+                                                    </div>
+                                                    <div class="comment-body">love this movie!!</div>
+                                                </div>
+
+                                                <img src="/static/icons/user.png" alt="Profile Photo" class="account">
+                                                <div class="comment-text black-text">
+                                                    <div class="comment-detail flex">
+                                                        <p class="username-text">tanont916</p>
+                                                        <p class="datetime-text">8:32 PM · Dec 23, 2024 </p>
+                                                    </div>
+                                                    <div class="comment-body">love this movie!!</div>
+                                                </div>
+
+                                                <img src="/static/icons/user.png" alt="Profile Photo" class="account">
+                                                <div class="comment-text black-text">
+                                                    <div class="comment-detail flex">
+                                                        <p class="username-text">_pawwie00</p>
+                                                        <p class="datetime-text">8:53 PM · Dec 23, 2024 </p>
+                                                    </div>
+                                                    <div class="comment-body">love this movie!!</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+</body>
+</html>
+
+<script>
+        document.addEventListener("DOMContentLoaded", function () {
+        fetch('/components/side_header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navbar-placeholder').innerHTML = data;
+                console.log("✅ Navbar loaded!");
+
+                // Attach event listeners AFTER navbar is loaded
+                attachEventListeners();
+            })
+            .catch(error => {
+                console.error("❌ Navbar failed to load!");
+                alert("Navbar failed to load!");
+            });
+    });
+
+    function attachEventListeners() {
+        const btn = document.querySelector('.advanced-search-btn');
+        const cancelBtn = document.querySelector('.cancel-btn');
+
+        if (btn) {
+            console.log("✅ Advanced search button found! Attaching event...");
+            btn.addEventListener("click", openPopup);
+        } else {
+            console.error("❌ Advanced search button missing!");
+        }
+
+        if (cancelBtn) {
+            console.log("✅ Cancel button found! Attaching event...");
+            cancelBtn.addEventListener("click", closePopup);
+        } else {
+            console.error("❌ Cancel button missing!");
+        }
+    }
+
+    function openPopup() {
+        console.log("🟢 Opening popup...");
+        document.getElementById("popupOverlay").style.display = "flex";
+    }
+
+    function closePopup() {
+        console.log("🔴 Closing popup...");
+        document.getElementById("popupOverlay").style.display = "none";
+    }
+    </script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+    // Sub Navbar Active State Toggle
+    const subNavItems = document.querySelectorAll(".sub-nav-item");
+    subNavItems.forEach(item => {
+        item.addEventListener("click", function () {
+            subNavItems.forEach(nav => nav.classList.remove("active"));
+            this.classList.add("active");
+        });
+    });
+
+    // Genre Carousel Navigation
+    const genreCarousel = document.getElementById("genre-carousel");
+    const prevBtn = document.getElementById("prev-nav");
+    const nextBtn = document.getElementById("next-nav");
+
+    let scrollAmount = 0;
+    const scrollStep = 200; // Pixels per scroll
+
+    prevBtn.addEventListener("click", function () {
+        scrollAmount -= scrollStep;
+        if (scrollAmount < 0) scrollAmount = 0;
+        genreCarousel.style.transform = `translateX(-${scrollAmount}px)`;
+    });
+
+    nextBtn.addEventListener("click", function () {
+        scrollAmount += scrollStep;
+        const maxScroll = genreCarousel.scrollWidth - genreCarousel.clientWidth;
+        if (scrollAmount > maxScroll) scrollAmount = maxScroll;
+        genreCarousel.style.transform = `translateX(-${scrollAmount}px)`;
+    });
+
+});
+
+</script>
+
