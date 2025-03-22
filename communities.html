@@ -557,6 +557,135 @@
             margin-top: -8px ;
        }
 
+       .tab-content {
+            display: none;
+        }
+
+       .tab-content.active {
+            display: block;
+       }
+
+        /* Sample explore-view box styling */
+       .explore-grid {
+            padding: 15px;
+            display: grid;
+            grid-template-columns: repeat(4, 0.2fr);
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+            margin-top: 50px;
+            z-index: 5;
+       }
+
+       .explore-box {
+            /*display: flex;*/
+            border: 2px solid rgba(0,0,0,0.3);
+            background-color: white;
+            border-radius: 12px;
+            min-height: 150px;
+            width: 150px;
+            text-align: center;
+            padding: 15px;
+            position: relative;
+            transition: 0.3s;
+       }
+
+       .explore-box:hover {
+            border-color: #DC0856;
+            transform: scale(1.05);
+       }
+
+       .explore-box img {
+            width: 68px;
+            height: 68px;
+            object-fit: contain;
+            object-position: center;
+            margin-top: 22px;
+       }
+
+       .explore-box p {
+            margin-top: 10px;
+            font-weight: 1000;
+            font-size: 14.5px;
+       }
+
+       .add-icon {
+           position: absolute;
+           top: -12px; /* move it more on top */
+           right: -12px;
+           background-color: #DC0856;
+           color: white;
+           border-radius: 50%;
+           width: 36px;         /* bigger */
+           height: 36px;        /* bigger */
+           display: flex;
+           justify-content: center;
+           align-items: center;
+           font-size: 22px;     /* bigger plus sign */
+           box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+           z-index: 1;
+           transition: transform 0.3s ease;
+       }
+
+        .add-icon:hover {
+            transform: scale(1.15);
+        }
+
+       /* Popup Overlay */
+       .popup-overlay {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            left: 0;
+            top: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0,0,0,0.5);
+            justify-content: center;
+            align-items: center;
+       }
+
+        /* Popup Box */
+        .popup-content {
+            background: white;
+            padding: 25px 40px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            max-width: 400px;
+        }
+
+        .popup-text {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .popup-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .popup-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .yes-btn {
+            background-color: #DC0856;
+            color: white;
+        }
+
+        .no-btn {
+            background-color: #eee;
+            color: #333;
+        }
+
 </style>
 <body>
 
@@ -574,11 +703,11 @@
 
                      <!-- Sub Navbar (Home & Explore) -->
                     <div class="sub-navbar">
-                        <a href="#" class="sub-nav-item active">
+                        <a href="#" class="sub-nav-item active" id="homeTab">
                             <i class="fas fa-home sub-nav-icon"></i> Home
                         </a>
                         <span class="divider">|</span>
-                        <a href="#" class="sub-nav-item">
+                        <a href="#" class="sub-nav-item" id="exploreTab">
                             <i class="fas fa-search sub-nav-icon"></i> Explore
                         </a>
                     </div>
@@ -599,329 +728,444 @@
                     </div>
 
                     <!-- Post Section -->
-                    <div class="post-section">
-                        <img src="static/profile/profile-3.jpeg" alt="User" class="user-avatar">
-                        <div class="post-input">
-                            <label>
-                                <select class="audience-dropdown">
-                                    <option value="" disabled selected>Choose Audience</option>
-                                    <option>Action Club</option>
-                                    <option>Comedy Club</option>
-                                    <option>Crime Club</option>
-                                    <option>Drama Club</option>
-                                    <option>Horror Club</option>
-                                    <option>Romance Club</option>
-                                </select>
-                            </label>
-                            <label>
-                                <input type="text" placeholder="What is happening?!" class="post-text">
-                            </label>
-                        </div>
-                        <!-- Icons before Post Button -->
-                        <div class="post-icons">
-                            <i class="fas fa-hashtag icon"></i>
-                            <i class="fas fa-image icon"></i>
-                            <i class="fas fa-chart-bar icon"></i>
-                        </div>
-                        <button class="post-btn">Post</button>
-                    </div>
-
-
-                    <!-- ✅ Post Display Section1 -->
-                    <div class="post-display">
-                        <span class="club-group" style="font-size: 16px"><i class="fas fa-users" style="color:#DC0856;"></i>            Comedy Club</span>
-                        <br>
-                        <div class="post-header">
-                            <img src="static/profile/profile4.jpeg" alt="User" class="user-avatar" style="width: 40px; height: 40px;">
-                            <span>TadThpn</span>
-                            <span class="post-meta">• 8:27 PM • Dec 23, 2023</span>
-                        </div>
-
-                        <section class="movie white-text">
-                            <div class="movie-img">
-                                <img src="static/commu-post/notfriends.jpg" alt="Post Image">
+                    <div id="home-view" class="tab-content active">
+                        <div class="post-section">
+                            <img src="static/profile/profile-3.jpeg" alt="User" class="user-avatar">
+                            <div class="post-input">
+                                <label>
+                                    <select class="audience-dropdown">
+                                        <option value="" disabled selected>Choose Audience</option>
+                                        <option>Action Club</option>
+                                        <option>Comedy Club</option>
+                                        <option>Crime Club</option>
+                                        <option>Drama Club</option>
+                                        <option>Horror Club</option>
+                                        <option>Romance Club</option>
+                                    </select>
+                                </label>
+                                <label>
+                                    <input type="text" placeholder="What is happening?!" class="post-text">
+                                </label>
                             </div>
-                            <div class="post-content">
-                                <div class="detail flex">
-                                    <p class="overview black-text" id="postOverview"> It is really a great film about
-                                        joe, the ingenious screenplay gradually reveal how the ordinary but sunny
-                                        character guy is loved and missed by his friends and deeply by Bokeh
-                                        around him.🩵🫶🏻
-                                    </p>
-                                    <div class="custom-line"></div>
-                                    <div class="comment-section">
-                                        <div class="comment-title">
-                                            <div class="stats">
-                                                <button class="fav PLACEHOLDER_IS_FAVORITE_CLASS black-text" id="favoriteButton"
-                                                        data-model="character" data-object-id="PLACEHOLDER_CHARACTER_ID">
-                                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="32" height="32">
-                                                             <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-                                                         </svg>
-                                                </button>
-                                                <h3 class="black-text">97</h3>
+                            <!-- Icons before Post Button -->
+                            <div class="post-icons">
+                                <i class="fas fa-hashtag icon"></i>
+                                <i class="fas fa-image icon"></i>
+                                <i class="fas fa-chart-bar icon"></i>
+                            </div>
+                            <button class="post-btn">Post</button>
+                        </div>
 
-                                                <img src="/static/icons/blog.png" alt="comments-icon" class="comments-icon">
-                                                <h3 class="black-text">23</h3>
 
-                                                <img src="/static/icons/bar-chart.png" alt="engage-icon" class="views-icon">
-                                                <h3 class="black-text">1987</h3>
+                        <!-- ✅ Post Display Section1 -->
+                        <div class="post-display">
+                            <span class="club-group" style="font-size: 16px"><i class="fas fa-users" style="color:#DC0856;"></i>            Comedy Club</span>
+                            <br>
+                            <div class="post-header">
+                                <img src="static/profile/profile4.jpeg" alt="User" class="user-avatar" style="width: 40px; height: 40px;">
+                                <span>TadThpn</span>
+                                <span class="post-meta">• 8:27 PM • Dec 23, 2023</span>
+                            </div>
+
+                            <section class="movie white-text">
+                                <div class="movie-img">
+                                    <img src="static/commu-post/notfriends.jpg" alt="Post Image">
+                                </div>
+                                <div class="post-content">
+                                    <div class="detail flex">
+                                        <p class="overview black-text" id="postOverview1"> It is really a great film about
+                                            joe, the ingenious screenplay gradually reveal how the ordinary but sunny
+                                            character guy is loved and missed by his friends and deeply by Bokeh
+                                            around him.🩵🫶🏻
+                                        </p>
+                                        <div class="custom-line"></div>
+                                        <div class="comment-section">
+                                            <div class="comment-title">
+                                                <div class="stats">
+                                                    <button class="fav PLACEHOLDER_IS_FAVORITE_CLASS black-text" id="favoriteButton1"
+                                                            data-model="character" data-object-id="PLACEHOLDER_CHARACTER_ID">
+                                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="32" height="32">
+                                                                 <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                                                             </svg>
+                                                    </button>
+                                                    <h3 class="black-text">97</h3>
+
+                                                    <img src="/static/icons/blog.png" alt="comments-icon" class="comments-icon">
+                                                    <h3 class="black-text">23</h3>
+
+                                                    <img src="/static/icons/bar-chart.png" alt="engage-icon" class="views-icon">
+                                                    <h3 class="black-text">1987</h3>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="comment-form">
-                                            <img src="/static/icons/user.png" alt="Profile Photo" class="account">
-                                            <form method="post" class="flex align-items-center" id="commentForm">
-                                                <input type="text" name="user_comment" placeholder="Add a comment..." class="comment-input">
-                                                <button type="submit" class="comment-submit">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
-                                                        <path d="M120-160v-640l760 320-760 320Zm80-120 474-200-474-200v140l240 60-240 60v140Zm0 0v-400 400Z"></path>
-                                                    </svg>
-                                                </button>
-                                            </form>
-                                        </div>
-
-                                        <div class="comment-box">
-                                            <!-- Example comment -->
-                                            <div class="comment">
+                                            <div class="comment-form">
                                                 <img src="/static/icons/user.png" alt="Profile Photo" class="account">
-                                                <div class="comment-text black-text">
-                                                    <div class="comment-detail flex">
-                                                        <p class="username-text">Jetaime_op</p>
-                                                        <p class="datetime-text">8:09 PM · Dec 23, 2024 </p>
-                                                    </div>
-                                                    <div class="comment-body">love this movie!!</div>
-                                                </div>
+                                                <form method="post" class="flex align-items-center" id="commentForm1">
+                                                    <input type="text" name="user_comment" placeholder="Add a comment..." class="comment-input">
+                                                    <button type="submit" class="comment-submit">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
+                                                            <path d="M120-160v-640l760 320-760 320Zm80-120 474-200-474-200v140l240 60-240 60v140Zm0 0v-400 400Z"></path>
+                                                        </svg>
+                                                    </button>
+                                                </form>
+                                            </div>
 
-                                                <img src="/static/icons/user.png" alt="Profile Photo" class="account">
-                                                <div class="comment-text black-text">
-                                                    <div class="comment-detail flex">
-                                                        <p class="username-text">junior.np</p>
-                                                        <p class="datetime-text">8:21 PM · Dec 23, 2024 </p>
+                                            <div class="comment-box">
+                                                <!-- Example comment -->
+                                                <div class="comment">
+                                                    <img src="/static/icons/user.png" alt="Profile Photo" class="account">
+                                                    <div class="comment-text black-text">
+                                                        <div class="comment-detail flex">
+                                                            <p class="username-text">Jetaime_op</p>
+                                                            <p class="datetime-text">8:09 PM · Dec 23, 2024 </p>
+                                                        </div>
+                                                        <div class="comment-body">love this movie!!</div>
                                                     </div>
-                                                    <div class="comment-body">love this movie!!</div>
-                                                </div>
 
-                                                <img src="/static/icons/user.png" alt="Profile Photo" class="account">
-                                                <div class="comment-text black-text">
-                                                    <div class="comment-detail flex">
-                                                        <p class="username-text">tanont916</p>
-                                                        <p class="datetime-text">8:32 PM · Dec 23, 2024 </p>
+                                                    <img src="/static/icons/user.png" alt="Profile Photo" class="account">
+                                                    <div class="comment-text black-text">
+                                                        <div class="comment-detail flex">
+                                                            <p class="username-text">junior.np</p>
+                                                            <p class="datetime-text">8:21 PM · Dec 23, 2024 </p>
+                                                        </div>
+                                                        <div class="comment-body">love this movie!!</div>
                                                     </div>
-                                                    <div class="comment-body">love this movie!!</div>
-                                                </div>
 
-                                                <img src="/static/icons/user.png" alt="Profile Photo" class="account">
-                                                <div class="comment-text black-text">
-                                                    <div class="comment-detail flex">
-                                                        <p class="username-text">_pawwie00</p>
-                                                        <p class="datetime-text">8:53 PM · Dec 23, 2024 </p>
+                                                    <img src="/static/icons/user.png" alt="Profile Photo" class="account">
+                                                    <div class="comment-text black-text">
+                                                        <div class="comment-detail flex">
+                                                            <p class="username-text">tanont916</p>
+                                                            <p class="datetime-text">8:32 PM · Dec 23, 2024 </p>
+                                                        </div>
+                                                        <div class="comment-body">love this movie!!</div>
                                                     </div>
-                                                    <div class="comment-body">love this movie!!</div>
+
+                                                    <img src="/static/icons/user.png" alt="Profile Photo" class="account">
+                                                    <div class="comment-text black-text">
+                                                        <div class="comment-detail flex">
+                                                            <p class="username-text">_pawwie00</p>
+                                                            <p class="datetime-text">8:53 PM · Dec 23, 2024 </p>
+                                                        </div>
+                                                        <div class="comment-body">love this movie!!</div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </section>
-                    </div>
-
-                    <!-- ✅ Post Display Section2 -->
-                    <div class="post-display">
-                        <span class="club-group" style="font-size: 16px"><i class="fas fa-users" style="color:#DC0856;"></i>            Drama Club</span>
-                        <br>
-                        <div class="post-header">
-                            <img src="static/profile/profile-3.jpeg" alt="User" class="user-avatar" style="width: 40px; height: 40px;">
-                            <span>Jetaime_op</span>
-                            <span class="post-meta">• 9:03 PM • Dec 23, 2023</span>
+                            </section>
                         </div>
 
-                        <section class="movie white-text">
-                            <div class="movie-img">
-                                <img src="static/commu-post/lannmah1.jpg" alt="Post Image">
+                        <!-- ✅ Post Display Section2 -->
+                        <div class="post-display">
+                            <span class="club-group" style="font-size: 16px"><i class="fas fa-users" style="color:#DC0856;"></i>            Drama Club</span>
+                            <br>
+                            <div class="post-header">
+                                <img src="static/profile/profile-3.jpeg" alt="User" class="user-avatar" style="width: 40px; height: 40px;">
+                                <span>Jetaime_op</span>
+                                <span class="post-meta">• 9:03 PM • Dec 23, 2023</span>
                             </div>
-                            <div class="post-content">
-                                <div class="detail flex">
-                                    <p class="overview black-text" id="postOverview"> There are things in life more
-                                        important than money, but sometimes we lose sight of that, unwittingly
-                                        allowing our perspectives to become seriously skewed.
-                                    </p>
-                                    <div class="custom-line"></div>
-                                    <div class="comment-section">
-                                        <div class="comment-title">
-                                            <div class="stats">
-                                                <button class="fav PLACEHOLDER_IS_FAVORITE_CLASS black-text" id="favoriteButton"
-                                                        data-model="character" data-object-id="PLACEHOLDER_CHARACTER_ID">
-                                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="32" height="32">
-                                                             <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-                                                         </svg>
-                                                </button>
-                                                <h3 class="black-text">97</h3>
 
-                                                <img src="/static/icons/blog.png" alt="comments-icon" class="comments-icon">
-                                                <h3 class="black-text">23</h3>
+                            <section class="movie white-text">
+                                <div class="movie-img">
+                                    <img src="static/commu-post/lannmah1.jpg" alt="Post Image">
+                                </div>
+                                <div class="post-content">
+                                    <div class="detail flex">
+                                        <p class="overview black-text" id="postOverview2"> There are things in life more
+                                            important than money, but sometimes we lose sight of that, unwittingly
+                                            allowing our perspectives to become seriously skewed.
+                                        </p>
+                                        <div class="custom-line"></div>
+                                        <div class="comment-section">
+                                            <div class="comment-title">
+                                                <div class="stats">
+                                                    <button class="fav PLACEHOLDER_IS_FAVORITE_CLASS black-text" id="favoriteButton2"
+                                                            data-model="character" data-object-id="PLACEHOLDER_CHARACTER_ID">
+                                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="32" height="32">
+                                                                 <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                                                             </svg>
+                                                    </button>
+                                                    <h3 class="black-text">97</h3>
 
-                                                <img src="/static/icons/bar-chart.png" alt="engage-icon" class="views-icon">
-                                                <h3 class="black-text">1987</h3>
+                                                    <img src="/static/icons/blog.png" alt="comments-icon" class="comments-icon">
+                                                    <h3 class="black-text">23</h3>
+
+                                                    <img src="/static/icons/bar-chart.png" alt="engage-icon" class="views-icon">
+                                                    <h3 class="black-text">1987</h3>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="comment-form">
-                                            <img src="/static/icons/user.png" alt="Profile Photo" class="account">
-                                            <form method="post" class="flex align-items-center" id="commentForm">
-                                                <input type="text" name="user_comment" placeholder="Add a comment..." class="comment-input">
-                                                <button type="submit" class="comment-submit">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
-                                                        <path d="M120-160v-640l760 320-760 320Zm80-120 474-200-474-200v140l240 60-240 60v140Zm0 0v-400 400Z"></path>
-                                                    </svg>
-                                                </button>
-                                            </form>
-                                        </div>
-
-                                        <div class="comment-box">
-                                            <!-- Example comment -->
-                                            <div class="comment">
+                                            <div class="comment-form">
                                                 <img src="/static/icons/user.png" alt="Profile Photo" class="account">
-                                                <div class="comment-text black-text">
-                                                    <div class="comment-detail flex">
-                                                        <p class="username-text">junior.np</p>
-                                                        <p class="datetime-text">8:09 PM · Dec 23, 2024 </p>
-                                                    </div>
-                                                    <div class="comment-body">love this movie!!</div>
-                                                </div>
+                                                <form method="post" class="flex align-items-center" id="commentForm2">
+                                                    <input type="text" name="user_comment" placeholder="Add a comment..." class="comment-input">
+                                                    <button type="submit" class="comment-submit">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
+                                                            <path d="M120-160v-640l760 320-760 320Zm80-120 474-200-474-200v140l240 60-240 60v140Zm0 0v-400 400Z"></path>
+                                                        </svg>
+                                                    </button>
+                                                </form>
+                                            </div>
 
-                                                <img src="/static/icons/user.png" alt="Profile Photo" class="account">
-                                                <div class="comment-text black-text">
-                                                    <div class="comment-detail flex">
-                                                        <p class="username-text">TadThpn</p>
-                                                        <p class="datetime-text">8:21 PM · Dec 23, 2024 </p>
+                                            <div class="comment-box">
+                                                <!-- Example comment -->
+                                                <div class="comment">
+                                                    <img src="/static/icons/user.png" alt="Profile Photo" class="account">
+                                                    <div class="comment-text black-text">
+                                                        <div class="comment-detail flex">
+                                                            <p class="username-text">junior.np</p>
+                                                            <p class="datetime-text">8:09 PM · Dec 23, 2024 </p>
+                                                        </div>
+                                                        <div class="comment-body">love this movie!!</div>
                                                     </div>
-                                                    <div class="comment-body">love this movie!!</div>
-                                                </div>
 
-                                                <img src="/static/icons/user.png" alt="Profile Photo" class="account">
-                                                <div class="comment-text black-text">
-                                                    <div class="comment-detail flex">
-                                                        <p class="username-text">tanont916</p>
-                                                        <p class="datetime-text">8:32 PM · Dec 23, 2024 </p>
+                                                    <img src="/static/icons/user.png" alt="Profile Photo" class="account">
+                                                    <div class="comment-text black-text">
+                                                        <div class="comment-detail flex">
+                                                            <p class="username-text">TadThpn</p>
+                                                            <p class="datetime-text">8:21 PM · Dec 23, 2024 </p>
+                                                        </div>
+                                                        <div class="comment-body">love this movie!!</div>
                                                     </div>
-                                                    <div class="comment-body">love this movie!!</div>
-                                                </div>
 
-                                                <img src="/static/icons/user.png" alt="Profile Photo" class="account">
-                                                <div class="comment-text black-text">
-                                                    <div class="comment-detail flex">
-                                                        <p class="username-text">_pawwie00</p>
-                                                        <p class="datetime-text">8:53 PM · Dec 23, 2024 </p>
+                                                    <img src="/static/icons/user.png" alt="Profile Photo" class="account">
+                                                    <div class="comment-text black-text">
+                                                        <div class="comment-detail flex">
+                                                            <p class="username-text">tanont916</p>
+                                                            <p class="datetime-text">8:32 PM · Dec 23, 2024 </p>
+                                                        </div>
+                                                        <div class="comment-body">love this movie!!</div>
                                                     </div>
-                                                    <div class="comment-body">love this movie!!</div>
+
+                                                    <img src="/static/icons/user.png" alt="Profile Photo" class="account">
+                                                    <div class="comment-text black-text">
+                                                        <div class="comment-detail flex">
+                                                            <p class="username-text">_pawwie00</p>
+                                                            <p class="datetime-text">8:53 PM · Dec 23, 2024 </p>
+                                                        </div>
+                                                        <div class="comment-body">love this movie!!</div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </section>
-                    </div>
-
-                    <!-- ✅ Post Display Section3 -->
-                    <div class="post-display">
-                        <span class="club-group" style="font-size: 16px"><i class="fas fa-users" style="color:#DC0856;"></i>            Romance Club</span>
-                        <br>
-                        <div class="post-header">
-                            <img src="static/profile/profile2.jpeg" alt="User" class="user-avatar" style="width: 40px; height: 40px;">
-                            <span>junior.np</span>
-                            <span class="post-meta">• 9:49 PM • Dec 23, 2023</span>
+                            </section>
                         </div>
 
-                        <section class="movie white-text">
-                            <div class="movie-img">
-                                <img src="static/commu-post/you&me&me.jpg" alt="Post Image">
+                        <!-- ✅ Post Display Section3 -->
+                        <div class="post-display">
+                            <span class="club-group" style="font-size: 16px"><i class="fas fa-users" style="color:#DC0856;"></i>            Romance Club</span>
+                            <br>
+                            <div class="post-header">
+                                <img src="static/profile/profile2.jpeg" alt="User" class="user-avatar" style="width: 40px; height: 40px;">
+                                <span>junior.np</span>
+                                <span class="post-meta">• 9:49 PM • Dec 23, 2023</span>
                             </div>
-                            <div class="post-content">
-                                <div class="detail flex">
-                                    <p class="overview black-text" id="postOverview"> Feeling nostalgic? 'You, Me,
-                                        and Us' will transport us back to the late '90s with its captivating storyline
-                                        and memorable characters. 🎥✨
-                                    </p>
-                                    <div class="custom-line"></div>
-                                    <div class="comment-section">
-                                        <div class="comment-title">
-                                            <div class="stats">
-                                                <button class="fav PLACEHOLDER_IS_FAVORITE_CLASS black-text" id="favoriteButton"
-                                                        data-model="character" data-object-id="PLACEHOLDER_CHARACTER_ID">
-                                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="32" height="32">
-                                                             <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-                                                         </svg>
-                                                </button>
-                                                <h3 class="black-text">97</h3>
 
-                                                <img src="/static/icons/blog.png" alt="comments-icon" class="comments-icon">
-                                                <h3 class="black-text">23</h3>
+                            <section class="movie white-text">
+                                <div class="movie-img">
+                                    <img src="static/commu-post/you&me&me.jpg" alt="Post Image">
+                                </div>
+                                <div class="post-content">
+                                    <div class="detail flex">
+                                        <p class="overview black-text" id="postOverview3"> Feeling nostalgic? 'You, Me,
+                                            and Us' will transport us back to the late '90s with its captivating storyline
+                                            and memorable characters. 🎥✨
+                                        </p>
+                                        <div class="custom-line"></div>
+                                        <div class="comment-section">
+                                            <div class="comment-title">
+                                                <div class="stats">
+                                                    <button class="fav PLACEHOLDER_IS_FAVORITE_CLASS black-text" id="favoriteButton3"
+                                                            data-model="character" data-object-id="PLACEHOLDER_CHARACTER_ID">
+                                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="32" height="32">
+                                                                 <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                                                             </svg>
+                                                    </button>
+                                                    <h3 class="black-text">97</h3>
 
-                                                <img src="/static/icons/bar-chart.png" alt="engage-icon" class="views-icon">
-                                                <h3 class="black-text">1987</h3>
+                                                    <img src="/static/icons/blog.png" alt="comments-icon" class="comments-icon">
+                                                    <h3 class="black-text">23</h3>
+
+                                                    <img src="/static/icons/bar-chart.png" alt="engage-icon" class="views-icon">
+                                                    <h3 class="black-text">1987</h3>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="comment-form">
-                                            <img src="/static/icons/user.png" alt="Profile Photo" class="account">
-                                            <form method="post" class="flex align-items-center" id="commentForm">
-                                                <input type="text" name="user_comment" placeholder="Add a comment..." class="comment-input">
-                                                <button type="submit" class="comment-submit">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
-                                                        <path d="M120-160v-640l760 320-760 320Zm80-120 474-200-474-200v140l240 60-240 60v140Zm0 0v-400 400Z"></path>
-                                                    </svg>
-                                                </button>
-                                            </form>
-                                        </div>
-
-                                        <div class="comment-box">
-                                            <!-- Example comment -->
-                                            <div class="comment">
+                                            <div class="comment-form">
                                                 <img src="/static/icons/user.png" alt="Profile Photo" class="account">
-                                                <div class="comment-text black-text">
-                                                    <div class="comment-detail flex">
-                                                        <p class="username-text">Jetaime_op</p>
-                                                        <p class="datetime-text">8:09 PM · Dec 23, 2024 </p>
-                                                    </div>
-                                                    <div class="comment-body">love this movie!!</div>
-                                                </div>
+                                                <form method="post" class="flex align-items-center" id="commentForm">
+                                                    <input type="text" name="user_comment" placeholder="Add a comment..." class="comment-input">
+                                                    <button type="submit" class="comment-submit">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
+                                                            <path d="M120-160v-640l760 320-760 320Zm80-120 474-200-474-200v140l240 60-240 60v140Zm0 0v-400 400Z"></path>
+                                                        </svg>
+                                                    </button>
+                                                </form>
+                                            </div>
 
-                                                <img src="/static/icons/user.png" alt="Profile Photo" class="account">
-                                                <div class="comment-text black-text">
-                                                    <div class="comment-detail flex">
-                                                        <p class="username-text">TadThpn</p>
-                                                        <p class="datetime-text">8:21 PM · Dec 23, 2024 </p>
+                                            <div class="comment-box">
+                                                <!-- Example comment -->
+                                                <div class="comment">
+                                                    <img src="/static/icons/user.png" alt="Profile Photo" class="account">
+                                                    <div class="comment-text black-text">
+                                                        <div class="comment-detail flex">
+                                                            <p class="username-text">Jetaime_op</p>
+                                                            <p class="datetime-text">8:09 PM · Dec 23, 2024 </p>
+                                                        </div>
+                                                        <div class="comment-body">love this movie!!</div>
                                                     </div>
-                                                    <div class="comment-body">love this movie!!</div>
-                                                </div>
 
-                                                <img src="/static/icons/user.png" alt="Profile Photo" class="account">
-                                                <div class="comment-text black-text">
-                                                    <div class="comment-detail flex">
-                                                        <p class="username-text">tanont916</p>
-                                                        <p class="datetime-text">8:32 PM · Dec 23, 2024 </p>
+                                                    <img src="/static/icons/user.png" alt="Profile Photo" class="account">
+                                                    <div class="comment-text black-text">
+                                                        <div class="comment-detail flex">
+                                                            <p class="username-text">TadThpn</p>
+                                                            <p class="datetime-text">8:21 PM · Dec 23, 2024 </p>
+                                                        </div>
+                                                        <div class="comment-body">love this movie!!</div>
                                                     </div>
-                                                    <div class="comment-body">love this movie!!</div>
-                                                </div>
 
-                                                <img src="/static/icons/user.png" alt="Profile Photo" class="account">
-                                                <div class="comment-text black-text">
-                                                    <div class="comment-detail flex">
-                                                        <p class="username-text">_pawwie00</p>
-                                                        <p class="datetime-text">8:53 PM · Dec 23, 2024 </p>
+                                                    <img src="/static/icons/user.png" alt="Profile Photo" class="account">
+                                                    <div class="comment-text black-text">
+                                                        <div class="comment-detail flex">
+                                                            <p class="username-text">tanont916</p>
+                                                            <p class="datetime-text">8:32 PM · Dec 23, 2024 </p>
+                                                        </div>
+                                                        <div class="comment-body">love this movie!!</div>
                                                     </div>
-                                                    <div class="comment-body">love this movie!!</div>
+
+                                                    <img src="/static/icons/user.png" alt="Profile Photo" class="account">
+                                                    <div class="comment-text black-text">
+                                                        <div class="comment-detail flex">
+                                                            <p class="username-text">_pawwie00</p>
+                                                            <p class="datetime-text">8:53 PM · Dec 23, 2024 </p>
+                                                        </div>
+                                                        <div class="comment-body">love this movie!!</div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                            </section>
+                        </div>
+                    </div>
+
+
+                    <!-- EXPLORE View -->
+                    <div id="explore-view" class="tab-content">
+                        <div class="explore-grid">
+                            <!-- EXPLORE Club Box -->
+<!--                            <div class="explore-box">-->
+<!--                                <div class="add-icon">+</div>-->
+<!--                                <img src="static/genres/action.png" alt="Action Club">-->
+<!--                                <p>Action Club</p>-->
+<!--                            </div>-->
+                            <div class="explore-box">
+                                <div class="add-icon">+</div>
+                                <img src="static/genres/adventure.png" alt="Adventure Club">
+                                <p>Adventure Club</p>
                             </div>
-                        </section>
+                            <div class="explore-box">
+                                <div class="add-icon">+</div>
+                                <img src="static/genres/animation.png" alt="Animation Club">
+                                <p>Animation Club</p>
+                            </div>
+<!--                            <div class="explore-box">-->
+<!--                                <div class="add-icon">+</div>-->
+<!--                                <img src="static/genres/comedy.png" alt="Comedy Club">-->
+<!--                                <p>Comedy Club</p>-->
+<!--                            </div>-->
+<!--                            <div class="explore-box">-->
+<!--                                <div class="add-icon">+</div>-->
+<!--                                <img src="static/genres/crime.png" alt="Crime Club">-->
+<!--                                <p>Crime Club</p>-->
+<!--                            </div>-->
+                            <div class="explore-box">
+                                <div class="add-icon">+</div>
+                                <img src="static/genres/documentary.png" alt="Documentary Club">
+                                <p>Documentary Club</p>
+                            </div>
+<!--                            <div class="explore-box">-->
+<!--                                <div class="add-icon">+</div>-->
+<!--                                <img src="static/genres/drama.png" alt="Drama Club">-->
+<!--                                <p>Drama Club</p>-->
+<!--                            </div>-->
+                            <div class="explore-box">
+                                <div class="add-icon">+</div>
+                                <img src="static/genres/family.png" alt="Family Club">
+                                <p>Family Club</p>
+                            </div>
+                            <div class="explore-box">
+                                <div class="add-icon">+</div>
+                                <img src="static/genres/fantasy.png" alt="Fantasy Club">
+                                <p>Fantasy Club</p>
+                            </div>
+                            <div class="explore-box">
+                                <div class="add-icon">+</div>
+                                <img src="static/genres/history.png" alt="History Club">
+                                <p>History Club</p>
+                            </div>
+<!--                            <div class="explore-box">-->
+<!--                                <div class="add-icon">+</div>-->
+<!--                                <img src="static/genres/horror.png" alt="Horror Club">-->
+<!--                                <p>Horror Club</p>-->
+<!--                            </div>-->
+                            <div class="explore-box">
+                                <div class="add-icon">+</div>
+                                <img src="static/genres/music.png" alt="Music Club">
+                                <p>Music Club</p>
+                            </div>
+                            <div class="explore-box">
+                                <div class="add-icon">+</div>
+                                <img src="static/genres/mystery.png" alt="Mystery Club">
+                                <p>Mystery Club</p>
+                            </div>
+                             <div class="explore-box">
+                                <div class="add-icon">+</div>
+                                <img src="static/genres/romance.png" alt="Romance Club">
+                                <p>Romance Club</p>
+                            </div>
+                            <div class="explore-box">
+                                <div class="add-icon">+</div>
+                                <img src="static/genres/scifi.png" alt="Science Fiction Club">
+                                <p>Science Fiction Club</p>
+                            </div>
+                            <div class="explore-box">
+                                <div class="add-icon">+</div>
+                                <img src="static/genres/thriller.png" alt="Thriller Club">
+                                <p>Thriller Club</p>
+                            </div>
+                            <div class="explore-box">
+                                <div class="add-icon">+</div>
+                                <img src="static/genres/tv-movie.png" alt="TV Movie Club">
+                                <p>TV Movie Club</p>
+                            </div>
+                            <div class="explore-box">
+                                <div class="add-icon">+</div>
+                                <img src="static/genres/war.png" alt="War Club">
+                                <p>War Club</p>
+                            </div>
+                            <div class="explore-box">
+                                <div class="add-icon">+</div>
+                                <img src="static/genres/western.png" alt="Western Club">
+                                <p>Western Club</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
+    </div>
+    <!-- Join Club Popup -->
+    <div id="joinPopup" class="popup-overlay">
+      <div class="popup-content">
+        <p class="popup-text">Would you like to join this club?</p>
+        <div class="popup-buttons">
+          <button class="popup-btn yes-btn">Yes</button>
+          <button class="popup-btn no-btn">No</button>
+        </div>
+      </div>
+    </div>
 </body>
 </html>
 
@@ -1004,8 +1248,59 @@
         if (scrollAmount > maxScroll) scrollAmount = maxScroll;
         genreCarousel.style.transform = `translateX(-${scrollAmount}px)`;
     });
-
 });
 
 </script>
+
+<!-- JS for View Switching -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const homeTab = document.getElementById("homeTab");
+        const exploreTab = document.getElementById("exploreTab");
+        const homeView = document.getElementById("home-view");
+        const exploreView = document.getElementById("explore-view");
+            homeTab.addEventListener("click", function () {
+                homeTab.classList.add("active");
+                exploreTab.classList.remove("active");
+                homeView.classList.add("active");
+                exploreView.classList.remove("active");
+            });
+
+            exploreTab.addEventListener("click", function () {
+                exploreTab.classList.add("active");
+                homeTab.classList.remove("active");
+                exploreView.classList.add("active");
+                homeView.classList.remove("active");
+            });
+        });
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    // Get all add icons
+    const addIcons = document.querySelectorAll(".add-icon");
+    const popup = document.getElementById("joinPopup");
+    const yesBtn = document.querySelector(".yes-btn");
+    const noBtn = document.querySelector(".no-btn");
+
+    // Loop through and attach click event
+    addIcons.forEach(icon => {
+        icon.addEventListener("click", function () {
+            popup.style.display = "flex"; // show popup
+        });
+    });
+
+    // Close popup on "No"
+    noBtn.addEventListener("click", function () {
+        popup.style.display = "none";
+    });
+
+    // Handle "Yes"
+    yesBtn.addEventListener("click", function () {
+        popup.style.display = "none";
+        alert("🎉 You’ve joined the club!");
+        // Add your backend/join logic here if needed
+    });
+});
+</script>
+
 
